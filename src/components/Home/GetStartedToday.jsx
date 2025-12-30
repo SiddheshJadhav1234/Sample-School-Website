@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import SignUpModal from "../Auth/SignUpModal";
+import AuthModal from "../Auth/AuthModal";
+
 
 const GetStartedToday = () => {
   const [activeModal, setActiveModal] = useState(null);
@@ -30,9 +31,13 @@ const GetStartedToday = () => {
         </div>
       </section>
 
-      {activeModal === "signup" && (
-        <SignUpModal onClose={() => setActiveModal(null)} />
-      )}
+      {activeModal && (
+  <AuthModal
+    type="signup"
+    onClose={() => setActiveModal(null)}
+  />
+)}
+
     </>
   );
 };
