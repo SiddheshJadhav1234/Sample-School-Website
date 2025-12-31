@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 
 const AuthModal = ({ onClose }) => {
-  const [isSignup, setIsSignup] = useState(false);
+  const [isSignup, setIsSignup] = useState(true);
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
-      {/* BACKDROP */}
+      {/* Backdrop */}
       <div
         className="absolute inset-0 bg-black/50 backdrop-blur-md"
         onClick={onClose}
       />
 
-      {/* CONTAINER */}
+      {/* Container */}
       <div className="relative w-3xl min-h-100 bg-white rounded-xl shadow-2xl overflow-hidden">
 
         {/* LOGIN FORM */}
@@ -25,7 +25,7 @@ const AuthModal = ({ onClose }) => {
             </h1>
             <input className="w-full mb-2 px-4 py-2 border rounded-full" placeholder="Email" />
             <input className="w-full mb-4 px-4 py-2 border rounded-full" placeholder="Password" />
-            <button className="border border-black text-black px-8 py-2 rounded-full">
+            <button className="border border-black text-black px-8 py-2 rounded-full cursor-pointer">
               Login
             </button>
           </form>
@@ -57,7 +57,7 @@ const AuthModal = ({ onClose }) => {
                 className="w-full mb-4 px-4 py-2 rounded-full border"
                 placeholder="Confirm Password"
               />
-            <button className="border border-black text-black px-8 py-2 rounded-full">
+            <button className="border border-black text-black px-8 py-2 rounded-full cursor-pointer">
               Sign Up
             </button>
           </form>
@@ -69,7 +69,7 @@ const AuthModal = ({ onClose }) => {
           ${isSignup ? "-translate-x-full" : ""}`}
         >
           <div
-            className={`relative -left-full w-[200%] h-full bg-linear-to-r from-pink-500 via-orange-400 to-pink-500
+            className={`relative -left-full w-[200%] h-full bg-linear-to-r from-amber-500 via-red-400 to-amber-500
             transition-transform duration-500
             ${isSignup ? "translate-x-1/2" : ""}`}
           >
@@ -79,7 +79,7 @@ const AuthModal = ({ onClose }) => {
               <p className="mt-2 text-sm">Please login</p>
               <button
                 onClick={() => setIsSignup(false)}
-                className="mt-4 border border-white px-6 py-2 rounded-full"
+                className="mt-4 border border-white px-6 py-2 rounded-full cursor-pointer"
               >
                 Login
               </button>
@@ -91,7 +91,7 @@ const AuthModal = ({ onClose }) => {
               <p className="mt-2 text-sm">Start your journey</p>
               <button
                 onClick={() => setIsSignup(true)}
-                className="mt-4 border border-white px-6 py-2 rounded-full"
+                className="mt-4 border border-white px-6 py-2 rounded-full cursor-pointer"
               >
                 Signup
               </button>
@@ -102,7 +102,7 @@ const AuthModal = ({ onClose }) => {
         {/* CLOSE */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-5 text-xl text-gray-600 z-50"
+          className="absolute top-4 right-5 cursor-pointer text-xl text-gray-600 z-50"
         >
           ✕
         </button>

@@ -21,12 +21,12 @@ const Header = () => {
             Login
           </button>
 
-          {/* <button
+          <button
             onClick={() => setActiveModal("signup")}
             className="bg-white text-black px-5 py-1.5 rounded-full font-semibold"
           >
             Sign Up
-          </button> */}
+          </button>
         </div>
       </header>
 

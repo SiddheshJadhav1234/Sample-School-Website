@@ -1,9 +1,35 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const WhatOurClientSays = () => {
+  const sectionRef = useRef(null);
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShow(true);
+        } else {
+          setShow(false);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="bg-white py-16 px-6 md:px-16">
-      <div className="text-center mb-10">
+    <section
+      ref={sectionRef}
+      className="bg-white py-16 px-6 md:px-16"
+    >
+      {/* HEADING */}
+      <div
+        className={`text-center mb-10 transition-all duration-700
+        ${show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+      >
         <h1 className="text-4xl md:text-5xl font-serif font-bold text-black">
           What Our Principal Says
         </h1>
@@ -12,15 +38,25 @@ const WhatOurClientSays = () => {
         </p>
       </div>
 
-      <div className="flex flex-col md:flex-row items-center gap-10 bg-white p-8 rounded-3xl shadow-lg border-2">
+      {/* CONTENT CARD */}
+      <div
+        className={`flex flex-col md:flex-row items-center gap-10
+        bg-amber-50 rounded-2xl border-2 p-8
+        transition-all duration-700
+        hover:shadow-xl hover:-translate-y-2
+        ${show ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-95 translate-y-10"}`}
+      >
+        {/* IMAGE */}
         <div className="md:w-1/3">
           <img
             src="https://news.globalindianschool.org/content/thumbnail/Ms-Vandana-Midha_FI1x.jpg"
             alt="Principal"
-            className="w-full h-80 object-cover rounded-2xl shadow-md"
+            className="w-full h-80 object-cover rounded-2xl shadow-md
+            hover:shadow-gray-300 hover:-translate-y-2 transition-all duration-300"
           />
         </div>
 
+        {/* TEXT */}
         <div className="md:w-2/3 text-center md:text-left">
           <p className="text-lg text-gray-700 leading-relaxed">
             At M.M. Vidya Mandir, we believe that every child is unique and full
