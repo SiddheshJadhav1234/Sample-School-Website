@@ -1,85 +1,159 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const OurJourney = () => {
+  const ref = useRef(null);
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setShow(entry.isIntersecting),
+      { threshold: 0.2 }
+    );
+
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  const milestones = [
+    {
+      year: "2010",
+      title: "Foundation",
+      desc: "M.M. Vidya Mandir was established with a vision to provide quality primary education",
+      icon: "🏫",
+      color: "from-blue-400 to-blue-600"
+    },
+    {
+      year: "2015",
+      title: "Expansion",
+      desc: "Added modern facilities and expanded to accommodate 200+ students",
+      icon: "📈",
+      color: "from-green-400 to-green-600"
+    },
+    {
+      year: "2018",
+      title: "Recognition",
+      desc: "Received state recognition for excellence in primary education",
+      icon: "🏆",
+      color: "from-amber-400 to-orange-600"
+    },
+    {
+      year: "2020",
+      title: "Digital Learning",
+      desc: "Successfully transitioned to hybrid learning during challenging times",
+      icon: "💻",
+      color: "from-purple-400 to-purple-600"
+    },
+    {
+      year: "2024",
+      title: "500+ Students",
+      desc: "Proudly serving over 500 happy students with 25+ dedicated teachers",
+      icon: "🎓",
+      color: "from-red-400 to-red-600"
+    }
+  ];
+
   return (
-    <section className="bg-[#f7f7f7] py-20 px-6 md:px-16">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
-        {/* LEFT CONTENT */}
-        <div>
-          <span className="inline-block mb-4 text-xs tracking-widest text-amber-600 font-semibold bg-amber-100 px-4 py-1 rounded-full">
-            SINCE 2004
+    <section ref={ref} className="py-20 px-6 md:px-16 bg-linear-to-br from-gray-50 to-amber-50/30 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-20 left-20 w-64 h-64 bg-amber-400 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-20 w-80 h-80 bg-orange-400 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto">
+        {/* Header */}
+        <div className={`text-center mb-16 transition-all duration-700 ${show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}>
+          <span className="inline-flex items-center gap-2 mb-4 text-xs tracking-widest font-semibold text-amber-600 bg-amber-100 px-4 py-2 rounded-full">
+            <div className="w-2 h-2 bg-amber-500 rounded-full animate-pulse"></div>
+            SINCE 2010
           </span>
-
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 leading-tight">
-            A Legacy of <span className="text-amber-600">Trust</span>
+          
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4">
+            Our <span className="text-transparent bg-clip-text bg-linear-to-r from-amber-500 to-orange-600">Journey</span>
           </h2>
-
-          <p className="mt-6 text-gray-600 leading-relaxed max-w-xl">
-            With years of dedication and commitment, our institution has grown
-            into a trusted place of learning. We believe in nurturing young
-            minds with care, discipline, and strong values.
+          
+          <div className="h-1 w-20 bg-linear-to-r from-amber-500 to-orange-500 rounded-full mx-auto mb-6"></div>
+          
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+            From humble beginnings to becoming a trusted name in primary education - discover the milestones that shaped our legacy.
           </p>
+        </div>
 
-          {/* FEATURE CARDS */}
-          <div className="mt-10 grid grid-cols-3 gap-6 max-w-xl">
-            {[
-              {
-                title: "Reliable Care",
-                img: "https://i.pinimg.com/736x/8e/09/36/8e093656a87e512bc02007cd0738c4b0.jpg",
-              },
-              {
-                title: "Safe Campus",
-                img: "https://i.pinimg.com/736x/e3/d4/6c/e3d46ccc1927faf131d310606dc1a615.jpg",
-              },
-              {
-                title: "Quality Learning",
-                img: "https://i.pinimg.com/736x/b9/a8/58/b9a858ff26bc428ecf12c34ce6022324.jpg",
-              },
-            ].map((item, index) => (
+        {/* Timeline */}
+        <div className="relative">
+          {/* Timeline Line */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-linear-to-b from-amber-400 to-orange-500 rounded-full hidden md:block"></div>
+
+          <div className="space-y-12">
+            {milestones.map((milestone, index) => (
               <div
                 key={index}
-                className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-3 text-center"
+                className={`flex flex-col md:flex-row items-center gap-8 transition-all duration-700 ${
+                  show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+                }`}
+                style={{ transitionDelay: `${index * 200}ms` }}
               >
-                <img
-                  src={item.img}
-                  alt={item.title}
-                  className="h-45 w-full object-cover rounded-lg mb-3"
-                />
-                <p className="text-sm font-semibold text-gray-700">
-                  {item.title}
-                </p>
+                {/* Left Content (odd items) */}
+                <div className={`flex-1 ${index % 2 === 0 ? 'md:text-right md:pr-8' : 'md:order-2 md:pl-8'}`}>
+                  <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-amber-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className={`w-12 h-12 bg-linear-to-br ${milestone.color} rounded-xl flex items-center justify-center text-white text-xl shadow-lg`}>
+                        {milestone.icon}
+                      </div>
+                      <div>
+                        <div className="text-2xl font-bold text-amber-600">{milestone.year}</div>
+                        <div className="text-lg font-semibold text-gray-900">{milestone.title}</div>
+                      </div>
+                    </div>
+                    <p className="text-gray-600 leading-relaxed">{milestone.desc}</p>
+                  </div>
+                </div>
+
+                {/* Center Timeline Dot */}
+                <div className="relative z-10 hidden md:block">
+                  <div className="w-6 h-6 bg-linear-to-br from-amber-400 to-orange-500 rounded-full border-4 border-white shadow-lg"></div>
+                </div>
+
+                {/* Right Content (even items) */}
+                <div className={`flex-1 ${index % 2 === 0 ? 'md:order-2 md:pl-8' : 'md:pr-8'}`}>
+                  {/* Image placeholder for alternating layout */}
+                  <div className="hidden md:block">
+                    <div className="w-full h-32 bg-linear-to-br from-amber-100 to-orange-100 rounded-2xl flex items-center justify-center opacity-50">
+                      <div className="text-4xl">{milestone.icon}</div>
+                    </div>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* RIGHT IMAGE CARD */}
-        <div className="flex justify-center">
-          <div
-            className="bg-white rounded-3xl shadow-xl overflow-hidden
-                  w-full max-w-md md:max-w-lg"
-          >
-            <img
-              src="https://images.unsplash.com/photo-1588072432836-e10032774350"
-              alt="Our Journey"
-              className="w-full h-56 md:h-64 object-cover"
-            />
-
-            <div className="p-6">
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
-                Our Journey
-              </h3>
-
-              <p className="text-gray-600 text-sm leading-relaxed">
-                What started as a small initiative has today become a place
-                where hundreds of children learn, grow, and dream big.
-              </p>
-
-              <div className="mt-4 flex items-center gap-3 text-amber-600 font-semibold text-sm">
-                <span className="h-0.5 w-8 bg-amber-500"></span>
-                <span>OUR SCHOOL STORY</span>
-              </div>
+        {/* Bottom Stats */}
+        <div className={`mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 transition-all duration-700 delay-1000 ${show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}>
+          {[
+            { number: "15+", label: "Years of Excellence", icon: "⭐" },
+            { number: "500+", label: "Happy Students", icon: "👨‍🎓" },
+            { number: "25+", label: "Dedicated Teachers", icon: "👩‍🏫" },
+            { number: "100%", label: "Parent Trust", icon: "❤️" }
+          ].map((stat, index) => (
+            <div key={index} className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 text-center shadow-lg border border-amber-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+              <div className="text-2xl mb-2">{stat.icon}</div>
+              <div className="text-2xl font-bold text-amber-600 mb-1">{stat.number}</div>
+              <div className="text-sm text-gray-600">{stat.label}</div>
             </div>
+          ))}
+        </div>
+
+        {/* Call to Action */}
+        <div className={`mt-16 text-center transition-all duration-700 delay-1200 ${show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}>
+          <div className="bg-linear-to-r from-amber-500 to-orange-600 rounded-3xl p-8 text-white shadow-2xl">
+            <h3 className="text-2xl font-bold mb-4">Be Part of Our Continuing Journey</h3>
+            <p className="text-amber-100 mb-6 max-w-2xl mx-auto">
+              Join hundreds of families who have trusted us with their children's education and future.
+            </p>
+            <button className="bg-white text-amber-600 px-8 py-3 rounded-full font-semibold hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+              Start Your Child's Journey
+            </button>
           </div>
         </div>
       </div>
