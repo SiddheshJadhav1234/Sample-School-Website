@@ -1,26 +1,27 @@
 import React, { useEffect, useRef, useState } from "react";
+import { FaGraduationCap, FaLock, FaMagic, FaLeaf } from 'react-icons/fa';
 
 const values = [
   { 
-    icon: "🎓", 
+    icon: FaGraduationCap, 
     title: "Quality Education", 
     desc: "Strong academic foundation with innovative teaching methods",
     color: "from-blue-400 to-blue-600"
   },
   { 
-    icon: "🔒", 
+    icon: FaLock, 
     title: "Child Safety", 
     desc: "Secure, caring environment with 24/7 supervision",
     color: "from-green-400 to-green-600"
   },
   { 
-    icon: "✨", 
+    icon: FaMagic, 
     title: "Discipline & Values", 
     desc: "Character building through moral education and ethics",
     color: "from-purple-400 to-purple-600"
   },
   { 
-    icon: "🌱", 
+    icon: FaLeaf, 
     title: "Holistic Growth", 
     desc: "Complete development of mind, body, and spirit",
     color: "from-amber-400 to-orange-600"
@@ -87,7 +88,7 @@ const OurValues = () => {
               {/* Icon */}
               <div className="relative mb-6">
                 <div className={`w-16 h-16 bg-linear-to-br ${item.color} rounded-2xl flex items-center justify-center text-2xl text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                  {item.icon}
+                  {React.createElement(item.icon, { className: 'text-2xl' })}
                 </div>
               </div>
               
@@ -110,7 +111,7 @@ const OurValues = () => {
           <div className="bg-white/70 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-amber-100 max-w-2xl mx-auto">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">Experience Our Values in Action</h3>
             <p className="text-gray-600 mb-6">Visit our campus to see how these core values shape every interaction and learning experience.</p>
-            <button className="bg-linear-to-r from-amber-500 to-orange-600 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+            <button className="bg-linear-to-r from-amber-500 to-orange-600 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer">
               Schedule a Visit
             </button>
           </div>

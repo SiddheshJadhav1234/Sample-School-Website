@@ -98,7 +98,7 @@ const TeacherDashboard = () => {
           </div>
           <h3 className="text-lg font-semibold text-gray-800 mb-2">Create Assignment</h3>
           <p className="text-gray-600 mb-4">Add new assignment for students</p>
-          <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors duration-300">
+          <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors duration-300 cursor-pointer">
             Create
           </button>
         </div>
@@ -109,7 +109,7 @@ const TeacherDashboard = () => {
           </div>
           <h3 className="text-lg font-semibold text-gray-800 mb-2">Plan Lesson</h3>
           <p className="text-gray-600 mb-4">Create new lesson plan</p>
-          <button className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors duration-300">
+          <button className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors duration-300 cursor-pointer">
             Plan
           </button>
         </div>
@@ -120,7 +120,7 @@ const TeacherDashboard = () => {
           </div>
           <h3 className="text-lg font-semibold text-gray-800 mb-2">Grade Papers</h3>
           <p className="text-gray-600 mb-4">Review and grade submissions</p>
-          <button className="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition-colors duration-300">
+          <button className="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition-colors duration-300 cursor-pointer">
             Grade
           </button>
         </div>
@@ -162,7 +162,7 @@ const TeacherDashboard = () => {
                     </span>
                   </td>
                   <td className="py-3 px-4">
-                    <button className="p-2 text-blue-600 hover:bg-blue-100 rounded-lg transition-colors duration-300">
+                    <button className="p-2 text-blue-600 hover:bg-blue-100 rounded-lg transition-colors duration-300 cursor-pointer">
                       <FaEye className="w-4 h-4" />
                     </button>
                   </td>
@@ -179,7 +179,7 @@ const TeacherDashboard = () => {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h2 className="text-2xl font-bold text-gray-800">Lesson Plans</h2>
-        <button className="bg-linear-to-r from-amber-400 to-amber-600 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 flex items-center gap-2">
+        <button className="bg-linear-to-r from-amber-400 to-amber-600 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer">
           <FaPlus className="w-4 h-4" />
           New Lesson
         </button>
@@ -214,10 +214,10 @@ const TeacherDashboard = () => {
                   </td>
                   <td className="py-3 px-4">
                     <div className="flex gap-2">
-                      <button className="p-2 text-blue-600 hover:bg-blue-100 rounded-lg transition-colors duration-300">
+                      <button className="p-2 text-blue-600 hover:bg-blue-100 rounded-lg transition-colors duration-300 cursor-pointer">
                         <FaEye className="w-4 h-4" />
                       </button>
-                      <button className="p-2 text-green-600 hover:bg-green-100 rounded-lg transition-colors duration-300">
+                      <button className="p-2 text-green-600 hover:bg-green-100 rounded-lg transition-colors duration-300 cursor-pointer">
                         <FaEdit className="w-4 h-4" />
                       </button>
                     </div>
@@ -272,10 +272,10 @@ const TeacherDashboard = () => {
                   </td>
                   <td className="py-3 px-4">
                     <div className="flex gap-2">
-                      <button className="p-2 text-blue-600 hover:bg-blue-100 rounded-lg transition-colors duration-300">
+                      <button className="p-2 text-blue-600 hover:bg-blue-100 rounded-lg transition-colors duration-300 cursor-pointer">
                         <FaEye className="w-4 h-4" />
                       </button>
-                      <button className="p-2 text-green-600 hover:bg-green-100 rounded-lg transition-colors duration-300">
+                      <button className="p-2 text-green-600 hover:bg-green-100 rounded-lg transition-colors duration-300 cursor-pointer">
                         <FaEdit className="w-4 h-4" />
                       </button>
                     </div>
@@ -322,7 +322,7 @@ const TeacherDashboard = () => {
               <li key={item.id}>
                 <button
                   onClick={() => setActiveTab(item.id)}
-                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ${
+                  className={`w-full flex items-center gap-3 cursor-pointer px-4 py-3 rounded-lg transition-all duration-300 ${
                     activeTab === item.id
                       ? 'bg-linear-to-r from-amber-400 to-amber-600 text-white'
                       : 'text-gray-700 hover:bg-gray-100'
@@ -337,7 +337,7 @@ const TeacherDashboard = () => {
         </nav>
 
         <div className="absolute bottom-4 left-4 right-4">
-          <button className="w-full flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-lg transition-all duration-300">
+          <button className="w-full flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-lg transition-all duration-300 cursor-pointer">
             <FaSignOutAlt className="w-5 h-5" />
             Logout
           </button>
@@ -354,7 +354,7 @@ const TeacherDashboard = () => {
               <p className="text-gray-600">Welcome back, Mrs. Priya Sharma</p>
             </div>
             <div className="flex items-center gap-4">
-              <button className="p-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors duration-300">
+              <button className="p-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors duration-300 cursor-pointer">
                 <FaBell className="w-5 h-5" />
               </button>
               <div className="w-10 h-10 bg-linear-to-br from-amber-400 to-amber-600 rounded-full flex items-center justify-center">

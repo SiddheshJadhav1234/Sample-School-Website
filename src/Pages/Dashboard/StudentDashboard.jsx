@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaBook, FaClipboardList, FaCalendarAlt, FaTrophy, FaUser, FaSignOutAlt, FaBell, FaDownload, FaPlay } from 'react-icons/fa';
+import { FaBook, FaClipboardList, FaCalendarAlt, FaTrophy, FaUser, FaSignOutAlt, FaBell, FaDownload, FaPlay, FaStar, FaBullseye, FaPenNib, FaHandshake, FaClock } from 'react-icons/fa';
 
 const StudentDashboard = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -42,10 +42,10 @@ const StudentDashboard = () => {
   ];
 
   const achievements = [
-    { id: 1, title: 'Math Star', description: 'Excellent performance in Mathematics', date: '2024-01-20', badge: '🌟' },
-    { id: 2, title: 'Perfect Attendance', description: 'No absences this month', date: '2024-01-15', badge: '🎯' },
-    { id: 3, title: 'Creative Writer', description: 'Best story in English class', date: '2024-01-10', badge: '✍️' },
-    { id: 4, title: 'Team Player', description: 'Great teamwork in group project', date: '2024-01-05', badge: '🤝' }
+    { id: 1, title: 'Math Star', description: 'Excellent performance in Mathematics', date: '2024-01-20', badgeIcon: FaStar },
+    { id: 2, title: 'Perfect Attendance', description: 'No absences this month', date: '2024-01-15', badgeIcon: FaBullseye },
+    { id: 3, title: 'Creative Writer', description: 'Best story in English class', date: '2024-01-10', badgeIcon: FaPenNib },
+    { id: 4, title: 'Team Player', description: 'Great teamwork in group project', date: '2024-01-05', badgeIcon: FaHandshake }
   ];
 
   const renderOverview = () => (
@@ -93,7 +93,7 @@ const StudentDashboard = () => {
             </div>
           ))}
         </div>
-        <button className="w-full mt-4 text-amber-600 font-semibold hover:text-amber-700 transition-colors duration-300">
+        <button className="w-full mt-4 text-amber-600 font-semibold hover:text-amber-700 transition-colors duration-300 cursor-pointer">
           View Full Schedule
         </button>
       </div>
@@ -104,14 +104,14 @@ const StudentDashboard = () => {
         <div className="grid md:grid-cols-2 gap-4">
           {achievements.slice(0, 2).map((achievement) => (
             <div key={achievement.id} className="flex items-center gap-4 p-4 bg-linear-to-r from-amber-50 to-amber-100 rounded-lg">
-              <div className="text-3xl">{achievement.badge}</div>
+              <div className="text-3xl text-amber-400"><achievement.badgeIcon className="w-8 h-8" /></div>
               <div>
                 <h4 className="font-semibold text-gray-800">{achievement.title}</h4>
                 <p className="text-sm text-gray-600">{achievement.description}</p>
                 <p className="text-xs text-gray-500 mt-1">{achievement.date}</p>
               </div>
             </div>
-          ))}
+          ))} 
         </div>
       </div>
     </div>
@@ -151,11 +151,11 @@ const StudentDashboard = () => {
             </div>
             <div className="flex gap-2">
               {assignment.status !== 'Completed' && (
-                <button className="bg-linear-to-r from-amber-400 to-amber-600 text-white px-4 py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300">
+                <button className="bg-linear-to-r from-amber-400 to-amber-600 text-white px-4 py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 cursor-pointer">
                   Start Working
                 </button>
               )}
-              <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors duration-300 flex items-center gap-2">
+              <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors duration-300 flex items-center gap-2 cursor-pointer">
                 <FaDownload className="w-4 h-4" />
                 Download
               </button>
@@ -180,8 +180,8 @@ const StudentDashboard = () => {
                 <h3 className="text-lg font-semibold text-gray-800 mb-2">{lesson.topic}</h3>
                 <p className="text-gray-600 mb-2">{lesson.subject}</p>
                 <div className="flex items-center gap-4 text-sm text-gray-500">
-                  <span>📅 {lesson.date}</span>
-                  <span>⏱️ {lesson.duration}</span>
+                  <span><FaCalendarAlt className="inline w-4 h-4 mr-1" />{lesson.date}</span>
+                  <span><FaClock className="inline w-4 h-4 mr-1" />{lesson.duration}</span>
                 </div>
               </div>
               <span className={`px-3 py-1 rounded-full text-sm font-medium ${
@@ -192,11 +192,11 @@ const StudentDashboard = () => {
               </span>
             </div>
             <div className="flex gap-2">
-              <button className="bg-linear-to-r from-amber-400 to-amber-600 text-white px-4 py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 flex items-center gap-2">
+              <button className="bg-linear-to-r from-amber-400 to-amber-600 text-white px-4 py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer">
                 <FaPlay className="w-4 h-4" />
                 {lesson.status === 'Completed' ? 'Review' : 'Start Lesson'}
               </button>
-              <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors duration-300">
+              <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors duration-300 cursor-pointer">
                 View Notes
               </button>
             </div>
@@ -229,7 +229,7 @@ const StudentDashboard = () => {
               </div>
               <div className="text-right">
                 <p className="text-sm text-gray-500">{schedule.time}</p>
-                <button className="text-amber-600 hover:text-amber-700 text-sm font-medium">
+                <button className="text-amber-600 hover:text-amber-700 text-sm font-medium cursor-pointer">
                   Join Class
                 </button>
               </div>
@@ -250,12 +250,12 @@ const StudentDashboard = () => {
         {achievements.map((achievement) => (
           <div key={achievement.id} className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
             <div className="text-center mb-4">
-              <div className="text-6xl mb-4">{achievement.badge}</div>
+              <div className="text-6xl mb-4"><achievement.badgeIcon className="w-12 h-12 text-amber-400 mx-auto" /></div>
               <h3 className="text-xl font-bold text-gray-800 mb-2">{achievement.title}</h3>
               <p className="text-gray-600 mb-2">{achievement.description}</p>
               <p className="text-sm text-gray-500">{achievement.date}</p>
             </div>
-            <button className="w-full bg-linear-to-r from-amber-400 to-amber-600 text-white py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300">
+            <button className="w-full bg-linear-to-r from-amber-400 to-amber-600 text-white py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 cursor-pointer">
               Share Achievement
             </button>
           </div>
@@ -329,7 +329,7 @@ const StudentDashboard = () => {
               <p className="text-gray-600">Grade 3A • Roll No: 15</p>
             </div>
             <div className="flex items-center gap-4">
-              <button className="p-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors duration-300">
+              <button className="p-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors duration-300 cursor-pointer">
                 <FaBell className="w-5 h-5" />
               </button>
               <div className="w-10 h-10 bg-linear-to-br from-amber-400 to-amber-600 rounded-full flex items-center justify-center">

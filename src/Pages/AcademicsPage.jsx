@@ -88,10 +88,10 @@ const AcademicsPage = () => {
             Comprehensive curriculum designed to nurture young minds and build strong foundations for lifelong learning.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-amber-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transform hover:scale-105 transition-all duration-300">
+            <button className="bg-white text-amber-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 cursor-pointer">
               Download Curriculum
             </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-amber-600 transform hover:scale-105 transition-all duration-300">
+            <button className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-amber-600 transform hover:scale-105 transition-all duration-300 cursor-pointer">
               Schedule Visit
             </button>
           </div>
@@ -103,8 +103,7 @@ const AcademicsPage = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-              Our
-              <span className="block bg-linear-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
+              Our <span className="inline-block bg-linear-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
                 Curriculum
               </span>
             </h2>
@@ -143,8 +142,7 @@ const AcademicsPage = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-              Our Teaching
-              <span className="block bg-linear-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
+              Our Teaching <span className="inline-block bg-linear-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
                 Methodology
               </span>
             </h2>
@@ -171,8 +169,7 @@ const AcademicsPage = () => {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-                Our Learning
-                <span className="block bg-linear-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
+                Our Learning <span className="inline-block bg-linear-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
                   Approach
                 </span>
               </h2>
@@ -240,10 +237,10 @@ const AcademicsPage = () => {
             Schedule a visit to see our curriculum in action and meet our dedicated teachers.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-amber-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transform hover:scale-105 transition-all duration-300">
+            <button className="bg-white text-amber-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 cursor-pointer">
               Schedule Campus Visit
             </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-amber-600 transform hover:scale-105 transition-all duration-300">
+            <button className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-amber-600 transform hover:scale-105 transition-all duration-300 cursor-pointer">
               Download Brochure
             </button>
           </div>

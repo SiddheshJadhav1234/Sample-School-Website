@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { FaFlag, FaHandsHelping, FaLightbulb } from 'react-icons/fa';
 
 const OurVision = () => {
   const ref = useRef(null);
@@ -44,12 +45,12 @@ const OurVision = () => {
             {/* Vision Goals */}
             <div className="space-y-4">
               {[
-                { icon: "🎆", title: "Future Leaders", desc: "Developing tomorrow's changemakers" },
-                { icon: "🤝", title: "Global Citizens", desc: "Fostering empathy and understanding" },
-                { icon: "💫", title: "Lifelong Learners", desc: "Inspiring curiosity and growth mindset" }
+                { icon: FaFlag, title: "Future Leaders", desc: "Developing tomorrow's changemakers" },
+                { icon: FaHandsHelping, title: "Global Citizens", desc: "Fostering empathy and understanding" },
+                { icon: FaLightbulb, title: "Lifelong Learners", desc: "Inspiring curiosity and growth mindset" }
               ].map((item, index) => (
                 <div key={index} className="flex items-start gap-4 p-4 bg-amber-50/50 backdrop-blur-sm rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
-                  <div className="text-2xl">{item.icon}</div>
+                  <div className="text-2xl">{React.createElement(item.icon, { className: 'text-2xl' })}</div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">{item.title}</h3>
                     <p className="text-gray-600 text-sm">{item.desc}</p>

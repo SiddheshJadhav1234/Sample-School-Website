@@ -17,8 +17,8 @@ const MissionVisionCards = () => {
         'Promote values of respect, integrity, and compassion',
         'Prepare students for future challenges and opportunities'
       ],
-      gradient: 'from-blue-400 to-blue-600',
-      bgGradient: 'from-blue-50 to-blue-100'
+      linear: 'from-blue-400 to-blue-600',
+      bglinear: 'from-blue-50 to-blue-100'
     },
     {
       id: 'vision',
@@ -32,8 +32,8 @@ const MissionVisionCards = () => {
         'Encourage environmental consciousness',
         'Build strong partnerships with families and community'
       ],
-      gradient: 'from-green-400 to-green-600',
-      bgGradient: 'from-green-50 to-green-100'
+      linear: 'from-green-400 to-green-600',
+      bglinear: 'from-green-50 to-green-100'
     },
     {
       id: 'values',
@@ -47,18 +47,17 @@ const MissionVisionCards = () => {
         'Integrity in thoughts and actions',
         'Compassion and empathy for others'
       ],
-      gradient: 'from-purple-400 to-purple-600',
-      bgGradient: 'from-purple-50 to-purple-100'
+      linear: 'from-purple-400 to-purple-600',
+      bglinear: 'from-purple-50 to-purple-100'
     }
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-br from-white via-gray-50 to-white">
+    <section className="py-20 bg-linear-to-br from-white via-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-            Our
-            <span className="block bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
+            Our <span className="inline-block bg-linear-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
               Foundation
             </span>
           </h2>
@@ -77,9 +76,9 @@ const MissionVisionCards = () => {
               onMouseEnter={() => setActiveCard(card.id)}
               onMouseLeave={() => setActiveCard(null)}
             >
-              <div className={`bg-gradient-to-br ${card.bgGradient} p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 h-full`}>
+              <div className={`bg-linear-to-br ${card.bglinear} p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 h-full`}>
                 {/* Icon */}
-                <div className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br ${card.gradient} rounded-full mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                <div className={`inline-flex items-center justify-center w-16 h-16 bg-linear-to-br ${card.linear} rounded-full mb-6 group-hover:scale-110 transition-transform duration-300`}>
                   <card.icon className="w-8 h-8 text-white" />
                 </div>
 
@@ -87,7 +86,7 @@ const MissionVisionCards = () => {
                 <div className="space-y-4">
                   <div>
                     <h3 className="text-2xl font-bold text-gray-800 mb-2">{card.title}</h3>
-                    <p className={`text-lg font-semibold bg-gradient-to-r ${card.gradient} bg-clip-text text-transparent`}>
+                    <p className={`text-lg font-semibold bg-linear-to-r ${card.linear} bg-clip-text text-transparent`}>
                       {card.subtitle}
                     </p>
                   </div>
@@ -104,7 +103,7 @@ const MissionVisionCards = () => {
                       <ul className="space-y-2">
                         {card.details.map((detail, index) => (
                           <li key={index} className="flex items-start gap-3 text-gray-600">
-                            <div className={`w-2 h-2 bg-gradient-to-r ${card.gradient} rounded-full mt-2 flex-shrink-0`}></div>
+                            <div className={`w-2 h-2 bg-linear-to-r ${card.linear} rounded-full mt-2 shrink-0`}></div>
                             <span className="text-sm">{detail}</span>
                           </li>
                         ))}
@@ -114,7 +113,7 @@ const MissionVisionCards = () => {
                 </div>
 
                 {/* Hover Effect Overlay */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`}></div>
+                <div className={`absolute inset-0 bg-linear-to-br ${card.linear} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`}></div>
               </div>
             </div>
           ))}
@@ -123,12 +122,12 @@ const MissionVisionCards = () => {
         {/* Bottom CTA */}
         <div className="text-center mt-16">
           <div className="inline-flex items-center gap-4 bg-white p-6 rounded-2xl shadow-lg">
-            <div className="text-4xl">🎯</div>
+            <div className="text-4xl"><FaBullseye className="text-4xl" /></div>
             <div className="text-left">
               <h3 className="text-xl font-semibold text-gray-800">Ready to Join Our Mission?</h3>
               <p className="text-gray-600">Discover how we can help your child thrive.</p>
             </div>
-            <button className="bg-gradient-to-r from-amber-400 to-amber-600 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 ml-4">
+            <button className="bg-linear-to-r from-amber-400 to-amber-600 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 ml-4 cursor-pointer">
               Get Started
             </button>
           </div>

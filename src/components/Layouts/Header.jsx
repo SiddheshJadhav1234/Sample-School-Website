@@ -27,19 +27,19 @@ const Header = () => {
           <div className="lg:hidden flex items-center gap-2">
             <button
               onClick={() => setActiveModal("login")}
-              className="border border-amber-400 text-amber-400 px-3 py-1.5 rounded-full hover:bg-amber-400 hover:text-black transition-all duration-300 text-xs"
+              className="border border-amber-400 text-amber-400 cursor-pointer px-3 py-1.5 rounded-full hover:bg-amber-400 hover:text-black transition-all duration-300 text-xs"
             >
               Login
             </button>
             <button
               onClick={() => setActiveModal("signup")}
-              className="bg-linear-to-r from-amber-400 to-amber-600 text-black px-3 py-1.5 rounded-full font-semibold hover:shadow-lg transition-all duration-300 text-xs"
+              className="bg-linear-to-r from-amber-400 to-amber-600 text-black cursor-pointer px-3 py-1.5 rounded-full font-semibold hover:shadow-lg transition-all duration-300 text-xs"
             >
               Sign Up
             </button>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="flex flex-col gap-1 p-2"
+              className="flex flex-col gap-1 p-2 cursor-pointer"
             >
               <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
               <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
@@ -51,13 +51,13 @@ const Header = () => {
           <div className="hidden lg:flex items-center gap-2">
             <button
               onClick={() => setActiveModal("login")}
-              className="border border-amber-400 text-amber-400 px-4 py-2 rounded-full hover:bg-amber-400 hover:text-black transition-all duration-300 text-sm"
+              className="border border-amber-400 text-amber-400 cursor-pointer px-4 py-2 rounded-full hover:bg-amber-400 hover:text-black transition-all duration-300 text-sm"
             >
               Login
             </button>
             <button
               onClick={() => setActiveModal("signup")}
-              className="bg-linear-to-r from-amber-400 to-amber-600 text-black px-4 py-2 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 text-sm"
+              className="bg-linear-to-r from-amber-400 to-amber-600 text-black cursor-pointer px-4 py-2 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 text-sm"
             >
               Sign Up
             </button>

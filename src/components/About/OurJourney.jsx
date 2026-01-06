@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
+import { MdSchool } from 'react-icons/md';
+import { FaChartLine, FaTrophy, FaLaptopCode, FaGraduationCap, FaStar, FaUserGraduate, FaChalkboardTeacher, FaHeart } from 'react-icons/fa';
 
 const OurJourney = () => {
   const ref = useRef(null);
@@ -19,35 +21,35 @@ const OurJourney = () => {
       year: "2010",
       title: "Foundation",
       desc: "M.M. Vidya Mandir was established with a vision to provide quality primary education",
-      icon: "🏫",
+      icon: MdSchool,
       color: "from-blue-400 to-blue-600"
     },
     {
       year: "2015",
       title: "Expansion",
       desc: "Added modern facilities and expanded to accommodate 200+ students",
-      icon: "📈",
+      icon: FaChartLine,
       color: "from-green-400 to-green-600"
     },
     {
       year: "2018",
       title: "Recognition",
       desc: "Received state recognition for excellence in primary education",
-      icon: "🏆",
+      icon: FaTrophy,
       color: "from-amber-400 to-orange-600"
     },
     {
       year: "2020",
       title: "Digital Learning",
       desc: "Successfully transitioned to hybrid learning during challenging times",
-      icon: "💻",
+      icon: FaLaptopCode,
       color: "from-purple-400 to-purple-600"
     },
     {
       year: "2024",
       title: "500+ Students",
       desc: "Proudly serving over 500 happy students with 25+ dedicated teachers",
-      icon: "🎓",
+      icon: FaGraduationCap,
       color: "from-red-400 to-red-600"
     }
   ];
@@ -98,7 +100,7 @@ const OurJourney = () => {
                   <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-amber-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
                     <div className="flex items-center gap-3 mb-3">
                       <div className={`w-12 h-12 bg-linear-to-br ${milestone.color} rounded-xl flex items-center justify-center text-white text-xl shadow-lg`}>
-                        {milestone.icon}
+                        {React.createElement(milestone.icon, { className: 'text-xl' })}
                       </div>
                       <div>
                         <div className="text-2xl font-bold text-amber-600">{milestone.year}</div>
@@ -119,7 +121,7 @@ const OurJourney = () => {
                   {/* Image placeholder for alternating layout */}
                   <div className="hidden md:block">
                     <div className="w-full h-32 bg-linear-to-br from-amber-100 to-orange-100 rounded-2xl flex items-center justify-center opacity-50">
-                      <div className="text-4xl">{milestone.icon}</div>
+                      <div className="text-4xl">{React.createElement(milestone.icon, { className: 'text-4xl' })}</div>
                     </div>
                   </div>
                 </div>
@@ -131,13 +133,13 @@ const OurJourney = () => {
         {/* Bottom Stats */}
         <div className={`mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 transition-all duration-700 delay-1000 ${show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}>
           {[
-            { number: "15+", label: "Years of Excellence", icon: "⭐" },
-            { number: "500+", label: "Happy Students", icon: "👨‍🎓" },
-            { number: "25+", label: "Dedicated Teachers", icon: "👩‍🏫" },
-            { number: "100%", label: "Parent Trust", icon: "❤️" }
+            { number: "15+", label: "Years of Excellence", icon: FaStar },
+            { number: "500+", label: "Happy Students", icon: FaUserGraduate },
+            { number: "25+", label: "Dedicated Teachers", icon: FaChalkboardTeacher },
+            { number: "100%", label: "Parent Trust", icon: FaHeart }
           ].map((stat, index) => (
             <div key={index} className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 text-center shadow-lg border border-amber-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-              <div className="text-2xl mb-2">{stat.icon}</div>
+              <div className="text-2xl mb-2">{React.createElement(stat.icon, { className: 'text-2xl' })}</div>
               <div className="text-2xl font-bold text-amber-600 mb-1">{stat.number}</div>
               <div className="text-sm text-gray-600">{stat.label}</div>
             </div>
@@ -151,7 +153,7 @@ const OurJourney = () => {
             <p className="text-amber-100 mb-6 max-w-2xl mx-auto">
               Join hundreds of families who have trusted us with their children's education and future.
             </p>
-            <button className="bg-white text-amber-600 px-8 py-3 rounded-full font-semibold hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+            <button className="bg-white text-amber-600 px-8 py-3 rounded-full font-semibold hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer">
               Start Your Child's Journey
             </button>
           </div>

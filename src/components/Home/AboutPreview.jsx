@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaUsers, FaGraduationCap, FaTrophy, FaHeart } from 'react-icons/fa';
+import { FaUsers, FaGraduationCap, FaTrophy, FaHeart, FaPaintBrush, FaRunning, FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const AboutPreview = () => {
@@ -17,12 +17,13 @@ const AboutPreview = () => {
           {/* Content */}
           <div className="space-y-8">
             <div>
+            
               <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-                About Our
-                <span className="block bg-linear-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
+                About Our <span className="inline-block bg-linear-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
                   School
                 </span>
               </h2>
+            
               <p className="text-lg text-gray-600 leading-relaxed mb-6">
                 M.M. Vidya Mandir Primary School has been a beacon of educational excellence 
                 for over 15 years. We believe in nurturing not just academic brilliance, 
@@ -67,7 +68,7 @@ const AboutPreview = () => {
         <div className="mt-20 grid md:grid-cols-3 gap-8">
           <div className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group">
             <div className="w-16 h-16 bg-linear-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-              <span className="text-2xl text-white">🎨</span>
+              <FaPaintBrush className="text-2xl text-white" />
             </div>
             <h3 className="text-xl font-semibold text-gray-800 mb-3">Creative Learning</h3>
             <p className="text-gray-600">Fostering creativity through art, music, and innovative teaching methods.</p>
@@ -75,7 +76,7 @@ const AboutPreview = () => {
 
           <div className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group">
             <div className="w-16 h-16 bg-linear-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-              <span className="text-2xl text-white">🏃‍♂️</span>
+              <FaRunning className="text-2xl text-white" />
             </div>
             <h3 className="text-xl font-semibold text-gray-800 mb-3">Sports & Fitness</h3>
             <p className="text-gray-600">Promoting physical wellness through various sports and fitness activities.</p>
@@ -83,7 +84,7 @@ const AboutPreview = () => {
 
           <div className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group">
             <div className="w-16 h-16 bg-linear-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-              <span className="text-2xl text-white">🌟</span>
+              <FaStar className="text-2xl text-white" />
             </div>
             <h3 className="text-xl font-semibold text-gray-800 mb-3">Character Building</h3>
             <p className="text-gray-600">Developing strong moral values and leadership qualities in every student.</p>

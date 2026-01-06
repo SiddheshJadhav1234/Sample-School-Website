@@ -66,9 +66,9 @@ const ContactPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-gray-50">
+    <div className="min-h-screen bg-linear-to-br from-amber-50 via-white to-gray-50">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-amber-400 via-amber-500 to-amber-600 text-white">
+      <section className="py-20 bg-linear-to-br from-amber-400 via-amber-500 to-amber-600 text-white">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
             Contact Us
@@ -85,7 +85,7 @@ const ContactPage = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
             {contactInfo.map((info, index) => (
               <div key={index} className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-                <div className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br ${info.color} rounded-full mb-4`}>
+                <div className={`inline-flex items-center justify-center w-16 h-16 bg-linear-to-br ${info.color} rounded-full mb-4`}>
                   <info.icon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-800 mb-3">{info.title}</h3>
@@ -101,15 +101,14 @@ const ContactPage = () => {
       </section>
 
       {/* Contact Form and Map */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
+      <section className="py-20 bg-linear-to-br from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Contact Form */}
             <div>
               <div className="mb-8">
                 <h2 className="text-4xl font-bold text-gray-800 mb-4">
-                  Send Us a
-                  <span className="block bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
+                  Send Us a <span className="inline-block bg-linear-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
                     Message
                   </span>
                 </h2>
@@ -192,7 +191,7 @@ const ContactPage = () => {
 
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-amber-400 to-amber-600 text-white py-4 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+                  className="w-full bg-linear-to-r from-amber-400 to-amber-600 text-white py-4 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <FaPaperPlane className="w-5 h-5" />
                   Send Message
@@ -203,9 +202,9 @@ const ContactPage = () => {
             {/* Map and Additional Info */}
             <div className="space-y-8">
               {/* Map Placeholder */}
-              <div className="bg-gradient-to-br from-amber-100 to-amber-200 rounded-2xl h-80 flex items-center justify-center">
+              <div className="bg-linear-to-br from-amber-100 to-amber-200 rounded-2xl h-80 flex items-center justify-center">
                 <div className="text-center">
-                  <div className="text-6xl mb-4">🗺️</div>
+                  <div className="text-6xl mb-4"><FaMapMarkerAlt className="w-12 h-12 mx-auto" /></div>
                   <h3 className="text-2xl font-bold text-gray-800 mb-2">Interactive Map</h3>
                   <p className="text-gray-600">Find us easily with directions</p>
                 </div>
@@ -218,8 +217,8 @@ const ContactPage = () => {
                   {departments.map((dept, index) => (
                     <div key={index} className="border-l-4 border-amber-400 pl-4 py-2">
                       <h4 className="font-semibold text-gray-800">{dept.name}</h4>
-                      <p className="text-sm text-gray-600">📞 {dept.phone}</p>
-                      <p className="text-sm text-gray-600">📧 {dept.email}</p>
+                      <p className="text-sm text-gray-600"><FaPhone className="inline w-4 h-4 mr-2" />{dept.phone}</p>
+                      <p className="text-sm text-gray-600"><FaEnvelope className="inline w-4 h-4 mr-2" />{dept.email}</p>
                     </div>
                   ))}
                 </div>
@@ -254,8 +253,7 @@ const ContactPage = () => {
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-800 mb-6">
-              Frequently Asked
-              <span className="block bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
+              Frequently Asked <span className="inline-block bg-linear-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
                 Questions
               </span>
             </h2>
@@ -286,7 +284,7 @@ const ContactPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-amber-400 to-amber-600">
+      <section className="py-20 bg-linear-to-br from-amber-400 to-amber-600">
         <div className="max-w-4xl mx-auto px-6 text-center text-white">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Ready to Visit Our School?
@@ -295,10 +293,10 @@ const ContactPage = () => {
             Experience our campus firsthand and meet our dedicated team of educators.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-amber-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transform hover:scale-105 transition-all duration-300">
+            <button className="bg-white text-amber-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 cursor-pointer">
               Schedule a Visit
             </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-amber-600 transform hover:scale-105 transition-all duration-300">
+            <button className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-amber-600 transform hover:scale-105 transition-all duration-300 cursor-pointer">
               Call Us Now
             </button>
           </div>

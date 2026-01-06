@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaStar, FaChevronLeft, FaChevronRight, FaQuoteLeft } from 'react-icons/fa';
+import { FaStar, FaChevronLeft, FaChevronRight, FaQuoteLeft, FaUsers, FaUserFriends, FaUserMd, FaUserTie } from 'react-icons/fa';
 
 const Testimonials = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -9,7 +9,7 @@ const Testimonials = () => {
       id: 1,
       name: "Rajesh & Priya Patel",
       role: "Parents of Arjun Patel (Grade 3)",
-      image: "👨‍👩‍👦",
+      image: FaUsers,
       rating: 5,
       text: "M.M. Vidya Mandir has been a blessing for our son Arjun. The teachers are incredibly caring and the learning environment is perfect. We've seen tremendous growth in his confidence and academic performance.",
       highlight: "Excellent teachers and caring environment"
@@ -18,7 +18,7 @@ const Testimonials = () => {
       id: 2,
       name: "Sunita Sharma",
       role: "Parent of Kavya Sharma (Grade 2)",
-      image: "👩‍👧",
+      image: FaUserFriends,
       rating: 5,
       text: "The holistic approach to education at this school is remarkable. My daughter not only excels academically but also participates actively in arts and sports. The school truly nurtures every aspect of a child's development.",
       highlight: "Holistic development approach"
@@ -27,7 +27,7 @@ const Testimonials = () => {
       id: 3,
       name: "Dr. Amit Kumar",
       role: "Parent of Rohan Kumar (Grade 4)",
-      image: "👨‍⚕️",
+      image: FaUserMd,
       rating: 5,
       text: "As a doctor, I appreciate the school's focus on both academic excellence and character building. The values instilled here will serve my son throughout his life. Highly recommended!",
       highlight: "Perfect balance of academics and values"
@@ -36,7 +36,7 @@ const Testimonials = () => {
       id: 4,
       name: "Meera & Vikash Singh",
       role: "Parents of Ananya Singh (Grade 1)",
-      image: "👫",
+      image: FaUserFriends,
       rating: 5,
       text: "Our daughter was shy when she started, but the supportive environment and skilled teachers helped her blossom. She now loves going to school every day and has made wonderful friends.",
       highlight: "Supportive environment for shy children"
@@ -45,7 +45,7 @@ const Testimonials = () => {
       id: 5,
       name: "Ravi Gupta",
       role: "Parent of Ishaan Gupta (Grade 5)",
-      image: "👨‍💼",
+      image: FaUserTie,
       rating: 5,
       text: "The school's commitment to individual attention is outstanding. Despite having multiple children in each class, teachers know each child personally and cater to their unique needs.",
       highlight: "Individual attention to every child"
@@ -68,12 +68,11 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="py-20 bg-linear-to-br from-gray-50 via-white to-amber-50">
+    <section className="py-20 bg-amber-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-            What Parents
-            <span className="block bg-linear-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
+            What Parents <span className="inline-block bg-linear-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
               Say About Us
             </span>
           </h2>
@@ -102,7 +101,7 @@ const Testimonials = () => {
                 {/* Highlight */}
                 <div className="bg-linear-to-r from-amber-100 to-amber-200 p-4 rounded-xl mb-6">
                   <p className="text-amber-800 font-semibold text-center">
-                    ✨ {testimonials[currentTestimonial].highlight}
+                    {React.createElement(FaStar, { className: 'inline mr-2' })}{testimonials[currentTestimonial].highlight}
                   </p>
                 </div>
               </div>
@@ -110,7 +109,7 @@ const Testimonials = () => {
               {/* Author Info */}
               <div className="flex items-center justify-between flex-wrap gap-4">
                 <div className="flex items-center gap-4">
-                  <div className="text-4xl">{testimonials[currentTestimonial].image}</div>
+                  <div className="text-4xl">{React.createElement(testimonials[currentTestimonial].image, { className: 'text-4xl' })}</div>
                   <div>
                     <h3 className="text-xl font-bold text-gray-800">
                       {testimonials[currentTestimonial].name}
@@ -132,25 +131,25 @@ const Testimonials = () => {
           {/* Navigation Buttons */}
           <button
             onClick={prevTestimonial}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 z-20"
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 z-20 cursor-pointer"
           >
             <FaChevronLeft className="w-6 h-6 text-gray-600" />
           </button>
           <button
             onClick={nextTestimonial}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 z-20"
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 z-20 cursor-pointer"
           >
             <FaChevronRight className="w-6 h-6 text-gray-600" />
           </button>
         </div>
 
         {/* Dots Indicator */}
-        <div className="flex justify-center mt-8 space-x-3">
+        <div className="hidden lg:flex justify-center mt-8 space-x-3">
           {testimonials.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentTestimonial(index)}
-              className={`w-4 h-4 rounded-full transition-all duration-300 ${
+              className={`w-3 h-3 cursor-pointer rounded-full transition-all duration-300 ${
                 currentTestimonial === index 
                   ? 'bg-linear-to-r from-amber-400 to-amber-600 scale-125' 
                   : 'bg-gray-300 hover:bg-gray-400'
@@ -186,7 +185,7 @@ const Testimonials = () => {
             <p className="text-lg mb-6 opacity-90">
               Experience the difference that quality education and caring teachers can make.
             </p>
-            <button className="bg-white text-amber-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transform hover:scale-105 transition-all duration-300">
+            <button className="bg-white text-amber-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 cursor-pointer">
               Schedule a School Visit
             </button>
           </div>

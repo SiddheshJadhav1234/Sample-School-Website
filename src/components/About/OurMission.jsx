@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
+import { MdSchool } from 'react-icons/md';
+import { FaBook, FaStar } from 'react-icons/fa';
 
 const OurMission = () => {
   const ref = useRef(null);
@@ -62,18 +64,18 @@ const OurMission = () => {
             {/* Mission Points */}
             <div className="space-y-4">
               {[
-                { icon: "🏫", title: "Safe Learning Environment", desc: "Secure campus with caring supervision" },
-                { icon: "📚", title: "Academic Excellence", desc: "Strong foundation in core subjects" },
-                { icon: "🌟", title: "Character Building", desc: "Values-based education for life" }
+                { icon: MdSchool, title: "Safe Learning Environment", desc: "Secure campus with caring supervision" },
+                { icon: FaBook, title: "Academic Excellence", desc: "Strong foundation in core subjects" },
+                { icon: FaStar, title: "Character Building", desc: "Values-based education for life" }
               ].map((item, index) => (
                 <div key={index} className="flex items-start gap-4 p-4 bg-white/70 backdrop-blur-sm rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
-                  <div className="text-2xl">{item.icon}</div>
+                  <div className="text-2xl">{React.createElement(item.icon, { className: 'text-2xl' })}</div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">{item.title}</h3>
                     <p className="text-gray-600 text-sm">{item.desc}</p>
                   </div>
                 </div>
-              ))}
+              ))} 
             </div>
           </div>
         </div>

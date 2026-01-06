@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaPlay, FaExpand, FaTimes } from 'react-icons/fa';
+import { FaPlay, FaExpand, FaTimes, FaSchool, FaTheaterMasks, FaFutbol, FaLaptop, FaMicroscope, FaPaintBrush, FaSwimmer, FaBook, FaCalculator, FaVideo, FaBasketballBall, FaMusic, FaBookOpen, FaFlask, FaSpa, FaTicketAlt, FaCut, FaFlag, FaUsers, FaChartBar, FaUtensils, FaPenNib, FaGraduationCap } from 'react-icons/fa';
 
 const GalleryPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -20,7 +20,7 @@ const GalleryPage = () => {
       title: 'Interactive Learning Session',
       description: 'Students engaged in hands-on learning activities',
       type: 'image',
-      placeholder: '🏫'
+      placeholder: <FaSchool className="w-12 h-12" />
     },
     {
       id: 2,
@@ -28,7 +28,7 @@ const GalleryPage = () => {
       title: 'Annual Day Celebration',
       description: 'Students performing cultural programs',
       type: 'image',
-      placeholder: '🎭'
+      placeholder: <FaTheaterMasks className="w-12 h-12" />
     },
     {
       id: 3,
@@ -36,7 +36,7 @@ const GalleryPage = () => {
       title: 'Sports Day Activities',
       description: 'Students participating in various sports',
       type: 'image',
-      placeholder: '⚽'
+      placeholder: <FaFutbol className="w-12 h-12" />
     },
     {
       id: 4,
@@ -44,7 +44,7 @@ const GalleryPage = () => {
       title: 'Modern Computer Lab',
       description: 'State-of-the-art computer laboratory',
       type: 'image',
-      placeholder: '💻'
+      placeholder: <FaLaptop className="w-12 h-12" />
     },
     {
       id: 5,
@@ -52,7 +52,7 @@ const GalleryPage = () => {
       title: 'Science Experiment',
       description: 'Students conducting science experiments',
       type: 'image',
-      placeholder: '🔬'
+      placeholder: <FaMicroscope className="w-12 h-12" />
     },
     {
       id: 6,
@@ -60,7 +60,7 @@ const GalleryPage = () => {
       title: 'Art Exhibition',
       description: 'Student artwork display',
       type: 'image',
-      placeholder: '🎨'
+      placeholder: <FaPaintBrush className="w-12 h-12" />
     },
     {
       id: 7,
@@ -68,7 +68,7 @@ const GalleryPage = () => {
       title: 'Swimming Competition',
       description: 'Inter-house swimming championship',
       type: 'image',
-      placeholder: '🏊'
+      placeholder: <FaSwimmer className="w-12 h-12" />
     },
     {
       id: 8,
@@ -76,7 +76,7 @@ const GalleryPage = () => {
       title: 'Library Reading Corner',
       description: 'Cozy reading space for students',
       type: 'image',
-      placeholder: '📚'
+      placeholder: <FaBook className="w-12 h-12" />
     },
     {
       id: 9,
@@ -84,7 +84,7 @@ const GalleryPage = () => {
       title: 'Mathematics Class',
       description: 'Interactive math learning session',
       type: 'image',
-      placeholder: '🧮'
+      placeholder: <FaCalculator className="w-12 h-12" />
     },
     {
       id: 10,
@@ -92,7 +92,7 @@ const GalleryPage = () => {
       title: 'School Assembly',
       description: 'Morning assembly and announcements',
       type: 'video',
-      placeholder: '📹'
+      placeholder: <FaVideo className="w-12 h-12" />
     },
     {
       id: 11,
@@ -100,7 +100,7 @@ const GalleryPage = () => {
       title: 'Basketball Practice',
       description: 'Students practicing basketball skills',
       type: 'image',
-      placeholder: '🏀'
+      placeholder: <FaBasketballBall className="w-12 h-12" />
     },
     {
       id: 12,
@@ -108,7 +108,7 @@ const GalleryPage = () => {
       title: 'Music Room',
       description: 'Students learning musical instruments',
       type: 'image',
-      placeholder: '🎵'
+      placeholder: <FaMusic className="w-12 h-12" />
     },
     {
       id: 13,
@@ -116,7 +116,7 @@ const GalleryPage = () => {
       title: 'English Literature Class',
       description: 'Students discussing literature',
       type: 'image',
-      placeholder: '📖'
+      placeholder: <FaBookOpen className="w-12 h-12" />
     },
     {
       id: 14,
@@ -124,7 +124,7 @@ const GalleryPage = () => {
       title: 'Science Fair',
       description: 'Student science project exhibition',
       type: 'image',
-      placeholder: '🧪'
+      placeholder: <FaFlask className="w-12 h-12" />
     },
     {
       id: 15,
@@ -132,7 +132,7 @@ const GalleryPage = () => {
       title: 'Yoga Session',
       description: 'Morning yoga and meditation',
       type: 'image',
-      placeholder: '🧘'
+      placeholder: <FaSpa className="w-12 h-12" />
     },
     {
       id: 16,
@@ -140,7 +140,7 @@ const GalleryPage = () => {
       title: 'Playground',
       description: 'Outdoor play area for students',
       type: 'image',
-      placeholder: '🎪'
+      placeholder: <FaTicketAlt className="w-12 h-12" />
     },
     {
       id: 17,
@@ -148,7 +148,7 @@ const GalleryPage = () => {
       title: 'Art and Craft Class',
       description: 'Creative art activities',
       type: 'image',
-      placeholder: '✂️'
+      placeholder: <FaCut className="w-12 h-12" />
     },
     {
       id: 18,
@@ -156,7 +156,7 @@ const GalleryPage = () => {
       title: 'Independence Day',
       description: 'Patriotic celebration and flag hoisting',
       type: 'image',
-      placeholder: '🇮🇳'
+      placeholder: <FaFlag className="w-12 h-12" />
     },
     {
       id: 19,
@@ -164,7 +164,7 @@ const GalleryPage = () => {
       title: 'Group Discussion',
       description: 'Students in collaborative learning',
       type: 'image',
-      placeholder: '👥'
+      placeholder: <FaUsers className="w-12 h-12" />
     },
     {
       id: 20,
@@ -172,7 +172,7 @@ const GalleryPage = () => {
       title: 'Presentation Skills',
       description: 'Students giving presentations',
       type: 'image',
-      placeholder: '📊'
+      placeholder: <FaChartBar className="w-12 h-12" />
     },
     {
       id: 21,
@@ -180,7 +180,7 @@ const GalleryPage = () => {
       title: 'Reading Session',
       description: 'Guided reading activities',
       type: 'image',
-      placeholder: '📚'
+      placeholder: <FaBook className="w-12 h-12" />
     },
     {
       id: 22,
@@ -188,7 +188,7 @@ const GalleryPage = () => {
       title: 'Cafeteria',
       description: 'Healthy meal time for students',
       type: 'image',
-      placeholder: '🍽️'
+      placeholder: <FaUtensils className="w-12 h-12" />
     },
     {
       id: 23,
@@ -196,7 +196,7 @@ const GalleryPage = () => {
       title: 'Creative Writing',
       description: 'Students working on creative stories',
       type: 'image',
-      placeholder: '✍️'
+      placeholder: <FaPenNib className="w-12 h-12" />
     },
     {
       id: 24,
@@ -204,7 +204,7 @@ const GalleryPage = () => {
       title: 'Graduation Ceremony',
       description: 'Students receiving certificates',
       type: 'image',
-      placeholder: '🎓'
+      placeholder: <FaGraduationCap className="w-12 h-12" />
     }
   ];
 
@@ -213,9 +213,9 @@ const GalleryPage = () => {
     : galleryItems.filter(item => item.category === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-gray-50">
+    <div className="min-h-screen bg-linear-to-br from-amber-50 via-white to-gray-50">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-amber-400 via-amber-500 to-amber-600 text-white">
+      <section className="py-20 bg-linear-to-br from-amber-400 via-amber-500 to-amber-600 text-white">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
             Our Gallery
@@ -236,7 +236,7 @@ const GalleryPage = () => {
                 onClick={() => setSelectedCategory(category.id)}
                 className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
                   selectedCategory === category.id
-                    ? 'bg-gradient-to-r from-amber-400 to-amber-600 text-white shadow-lg scale-105'
+                    ? 'bg-linear-to-r from-amber-400 to-amber-600 text-white shadow-lg scale-105'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:scale-105'
                 }`}
               >
@@ -259,7 +259,7 @@ const GalleryPage = () => {
                 style={{ animationDelay: `${index * 50}ms` }}
               >
                 {/* Image Placeholder */}
-                <div className="aspect-square bg-gradient-to-br from-amber-100 to-amber-200 flex items-center justify-center relative overflow-hidden">
+                <div className="aspect-square bg-linear-to-br from-amber-100 to-amber-200 flex items-center justify-center relative overflow-hidden">
                   <div className="text-6xl opacity-60 group-hover:scale-110 transition-transform duration-300">
                     {item.placeholder}
                   </div>
@@ -302,7 +302,7 @@ const GalleryPage = () => {
 
           {/* Load More Button */}
           <div className="text-center mt-12">
-            <button className="bg-gradient-to-r from-amber-400 to-amber-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300">
+            <button className="bg-gradient-to-r from-amber-400 to-amber-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 cursor-pointer">
               Load More Images
             </button>
           </div>
@@ -316,13 +316,13 @@ const GalleryPage = () => {
             {/* Close Button */}
             <button
               onClick={() => setSelectedImage(null)}
-              className="absolute top-4 right-4 z-10 w-10 h-10 bg-black/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-black/40 transition-all duration-300"
+              className="absolute top-4 right-4 z-10 w-10 h-10 bg-black/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-black/40 transition-all duration-300 cursor-pointer"
             >
               <FaTimes className="w-5 h-5" />
             </button>
 
             {/* Image */}
-            <div className="aspect-video bg-gradient-to-br from-amber-100 to-amber-200 flex items-center justify-center">
+            <div className="aspect-video bg-linear-to-br from-amber-100 to-amber-200 flex items-center justify-center">
               <div className="text-8xl opacity-60">{selectedImage.placeholder}</div>
             </div>
 
@@ -335,10 +335,10 @@ const GalleryPage = () => {
                   {selectedImage.category}
                 </span>
                 <div className="flex gap-2">
-                  <button className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full hover:bg-gray-200 transition-colors duration-300">
+                  <button className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full hover:bg-gray-200 transition-colors duration-300 cursor-pointer">
                     Download
                   </button>
-                  <button className="px-4 py-2 bg-gradient-to-r from-amber-400 to-amber-600 text-white rounded-full hover:shadow-lg transition-all duration-300">
+                  <button className="px-4 py-2 bg-gradient-to-r from-amber-400 to-amber-600 text-white rounded-full hover:shadow-lg transition-all duration-300 cursor-pointer">
                     Share
                   </button>
                 </div>
@@ -349,7 +349,7 @@ const GalleryPage = () => {
       )}
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-amber-400 to-amber-600">
+      <section className="py-20 bg-linear-to-br from-amber-400 to-amber-600">
         <div className="max-w-4xl mx-auto px-6 text-center text-white">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Want to Be Part of These Memories?
@@ -358,10 +358,10 @@ const GalleryPage = () => {
             Join our school community and create lasting memories with us.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-amber-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transform hover:scale-105 transition-all duration-300">
+            <button className="bg-white text-amber-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 cursor-pointer">
               Schedule a Visit
             </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-amber-600 transform hover:scale-105 transition-all duration-300">
+            <button className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-amber-600 transform hover:scale-105 transition-all duration-300 cursor-pointer">
               Apply for Admission
             </button>
           </div>

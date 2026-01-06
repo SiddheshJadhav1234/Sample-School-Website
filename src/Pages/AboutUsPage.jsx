@@ -8,11 +8,9 @@ import WhyChooseUsAbout from "../components/About/WhyChooseUsAbout";
 import OurJourney from "../components/About/OurJourney";
 import WhyParentsTrustUs from "../components/About/WhyParentsTrustUs";
 
-
 const AboutUsPage = () => {
   return (
     <>
-     
       <AboutHero />
       <OurJourney />
       <OurMission />
@@ -21,7 +19,6 @@ const AboutUsPage = () => {
       <PrincipalMessage />
       <WhyParentsTrustUs />
       <WhyChooseUsAbout />
-      
     </>
   );
 };

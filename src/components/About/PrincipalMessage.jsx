@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { FaGraduationCap, FaHeart, FaTrophy, FaStar } from 'react-icons/fa';
 
 const PrincipalMessage = () => {
   const [show, setShow] = useState(false);
@@ -121,13 +122,13 @@ const PrincipalMessage = () => {
         {/* Bottom Achievement Stats */}
         <div className={`mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 transition-all duration-700 delay-600 ${show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}>
           {[
-            { number: "500+", label: "Students Mentored", icon: "🎓" },
-            { number: "98%", label: "Parent Satisfaction", icon: "❤️" },
-            { number: "15+", label: "Awards Received", icon: "🏆" },
-            { number: "100%", label: "Success Stories", icon: "✨" }
+            { number: "500+", label: "Students Mentored", icon: FaGraduationCap },
+            { number: "98%", label: "Parent Satisfaction", icon: FaHeart },
+            { number: "15+", label: "Awards Received", icon: FaTrophy },
+            { number: "100%", label: "Success Stories", icon: FaStar }
           ].map((stat, index) => (
             <div key={index} className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 text-center shadow-lg border border-amber-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-              <div className="text-2xl mb-2">{stat.icon}</div>
+              <div className="text-2xl mb-2">{React.createElement(stat.icon, { className: 'text-2xl' })}</div>
               <div className="text-2xl font-bold text-amber-600 mb-1">{stat.number}</div>
               <div className="text-sm text-gray-600">{stat.label}</div>
             </div>

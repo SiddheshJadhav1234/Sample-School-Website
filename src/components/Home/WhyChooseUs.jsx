@@ -24,22 +24,22 @@ const WhyChooseUs = () => {
       icon: FaChalkboardTeacher,
       title: "Expert Teachers",
       description: "Qualified and passionate educators dedicated to nurturing every child's potential.",
-      color: "from-blue-400 to-blue-600",
-      bgColor: "from-blue-50 to-blue-100"
+      color: "from-amber-400 to-amber-600",
+      bgColor: "from-amber-50 to-amber-100"
     },
     {
       icon: FaShieldAlt,
       title: "Safe Environment",
       description: "Secure campus with modern safety measures ensuring peace of mind for parents.",
-      color: "from-green-400 to-green-600",
-      bgColor: "from-green-50 to-green-100"
+      color: "from-amber-400 to-amber-600",
+      bgColor: "from-amber-50 to-amber-100"
     },
     {
       icon: FaGraduationCap,
       title: "Academic Excellence",
       description: "Strong curriculum foundation preparing students for future academic success.",
-      color: "from-purple-400 to-purple-600",
-      bgColor: "from-purple-50 to-purple-100"
+      color: "from-amber-400 to-amber-600",
+      bgColor: "from-amber-50 to-amber-100"
     },
     {
       icon: FaStar,
@@ -52,15 +52,15 @@ const WhyChooseUs = () => {
       icon: FaUsers,
       title: "Small Class Sizes",
       description: "Personalized attention with optimal teacher-to-student ratios for better learning.",
-      color: "from-pink-400 to-pink-600",
-      bgColor: "from-pink-50 to-pink-100"
+      color: "from-amber-400 to-amber-600",
+      bgColor: "from-amber-50 to-amber-100"
     },
     {
       icon: FaTrophy,
       title: "Proven Results",
       description: "Track record of student achievements and successful transitions to higher education.",
-      color: "from-indigo-400 to-indigo-600",
-      bgColor: "from-indigo-50 to-indigo-100"
+      color: "from-amber-400 to-amber-600",
+      bgColor: "from-amber-50 to-amber-100"
     }
   ];
 
@@ -76,8 +76,7 @@ const WhyChooseUs = () => {
           ${show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-4 sm:mb-6 leading-tight">
-            Why Choose
-            <span className="block bg-linear-to-r from-blue-500 to-indigo-600 bg-clip-text text-transparent">
+            Why Choose <span className="inline-block bg-linear-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
               Our School?
             </span>
           </h2>
@@ -122,16 +121,16 @@ const WhyChooseUs = () => {
         {/* Bottom CTA */}
         <div className={`text-center mt-12 sm:mt-16 transition-all duration-700 delay-500
           ${show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-          <div className="bg-linear-to-r from-blue-500 to-indigo-600 p-6 sm:p-8 rounded-2xl text-white">
+          <div className="bg-amber-100 p-6 sm:p-8 rounded-2xl text-black">
             <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Ready to Give Your Child the Best Start?</h3>
             <p className="text-base sm:text-lg mb-4 sm:mb-6 opacity-90 px-4">
               Join hundreds of families who have chosen excellence for their children's education.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-              <button className="bg-white text-blue-600 px-6 sm:px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 text-sm sm:text-base">
+              <button className="bg-linear-to-r from-amber-400 to-amber-600 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 ml-4 cursor-pointer">
                 Schedule a Visit
               </button>
-              <button className="border-2 border-white text-white px-6 sm:px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transform hover:scale-105 transition-all duration-300 text-sm sm:text-base">
+              <button className="bg-linear-to-r from-amber-400 to-amber-600 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 ml-4 cursor-pointer">
                 Apply Now
               </button>
             </div>

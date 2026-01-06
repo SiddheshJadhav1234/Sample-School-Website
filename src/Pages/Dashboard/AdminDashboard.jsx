@@ -162,13 +162,13 @@ const AdminDashboard = () => {
                   <td className="py-3 px-4 text-gray-600">{student.joinDate}</td>
                   <td className="py-3 px-4">
                     <div className="flex gap-2">
-                      <button className="p-2 text-blue-600 hover:bg-blue-100 rounded-lg transition-colors duration-300">
+                      <button className="p-2 text-blue-600 hover:bg-blue-100 rounded-lg transition-colors duration-300 cursor-pointer">
                         <FaEye className="w-4 h-4" />
                       </button>
-                      <button className="p-2 text-green-600 hover:bg-green-100 rounded-lg transition-colors duration-300">
+                      <button className="p-2 text-green-600 hover:bg-green-100 rounded-lg transition-colors duration-300 cursor-pointer">
                         <FaEdit className="w-4 h-4" />
                       </button>
-                      <button className="p-2 text-red-600 hover:bg-red-100 rounded-lg transition-colors duration-300">
+                      <button className="p-2 text-red-600 hover:bg-red-100 rounded-lg transition-colors duration-300 cursor-pointer">
                         <FaTrash className="w-4 h-4" />
                       </button>
                     </div>
@@ -186,9 +186,7 @@ const AdminDashboard = () => {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h2 className="text-2xl font-bold text-gray-800">Teachers Management</h2>
-        <button className="bg-linear-to-r from-amber-400 to-amber-600 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 flex items-center gap-2">
-          <FaPlus className="w-4 h-4" />
-          Add Teacher
+        <button className="bg-linear-to-r from-amber-400 to-amber-600 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer">
         </button>
       </div>
 
@@ -217,13 +215,13 @@ const AdminDashboard = () => {
                   </td>
                   <td className="py-3 px-4">
                     <div className="flex gap-2">
-                      <button className="p-2 text-blue-600 hover:bg-blue-100 rounded-lg transition-colors duration-300">
+                      <button className="p-2 text-blue-600 hover:bg-blue-100 rounded-lg transition-colors duration-300 cursor-pointer">
                         <FaEye className="w-4 h-4" />
                       </button>
-                      <button className="p-2 text-green-600 hover:bg-green-100 rounded-lg transition-colors duration-300">
+                      <button className="p-2 text-green-600 hover:bg-green-100 rounded-lg transition-colors duration-300 cursor-pointer">
                         <FaEdit className="w-4 h-4" />
                       </button>
-                      <button className="p-2 text-red-600 hover:bg-red-100 rounded-lg transition-colors duration-300">
+                      <button className="p-2 text-red-600 hover:bg-red-100 rounded-lg transition-colors duration-300 cursor-pointer">
                         <FaTrash className="w-4 h-4" />
                       </button>
                     </div>
@@ -354,7 +352,7 @@ const AdminDashboard = () => {
               <p className="text-gray-600">Welcome back, Administrator</p>
             </div>
             <div className="flex items-center gap-4">
-              <button className="p-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors duration-300">
+              <button className="p-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors duration-300 cursor-pointer">
                 <FaBell className="w-5 h-5" />
               </button>
               <div className="w-10 h-10 bg-linear-to-br from-amber-400 to-amber-600 rounded-full flex items-center justify-center">
