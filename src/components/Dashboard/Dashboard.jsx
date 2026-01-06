@@ -7,6 +7,7 @@ import ChartSection from './ChartSection';
 
 const Dashboard = ({ role, data }) => {
   const [activeTab, setActiveTab] = useState('overview');
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   if (!data || !data.sidebarItems || !data.header) {
     return <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -23,26 +24,46 @@ const Dashboard = ({ role, data }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
-      <Sidebar 
-        items={data.sidebarItems}
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-        role={role}
-      />
+    <div className="min-h-screen bg-gray-50 flex relative">
+      {/* Mobile Overlay */}
+      {sidebarOpen && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
       
-      <div className="flex-1 flex flex-col">
+      {/* Sidebar */}
+      <div className={`fixed lg:static inset-y-0 left-0 z-50 transform transition-transform duration-300 ease-in-out lg:transform-none ${
+        sidebarOpen ? 'translate-x-0' : '-translate-x-full'
+      } lg:translate-x-0`}>
+        <Sidebar 
+          items={data.sidebarItems}
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+          role={role}
+          onClose={() => setSidebarOpen(false)}
+        />
+      </div>
+      
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col min-w-0">
         <Header 
           title={data.header.title}
           subtitle={data.header.subtitle}
           badgeText={data.header.badgeText}
+          onMenuClick={() => setSidebarOpen(true)}
         />
         
-        <main className="flex-1 p-6">
+        <main className="flex-1 p-3 sm:p-6 overflow-auto">
           {activeTab === 'overview' && data.stats && (
-            <StatsGrid stats={data.stats} />
+            <div className="mb-6">
+              <StatsGrid stats={data.stats} />
+            </div>
           )}
-          {renderContent()}
+          <div className="min-w-0">
+            {renderContent()}
+          </div>
         </main>
       </div>
     </div>

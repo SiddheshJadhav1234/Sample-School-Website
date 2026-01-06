@@ -1,7 +1,7 @@
 import React from 'react';
-import { FaSignOutAlt } from 'react-icons/fa';
+import { FaSignOutAlt, FaTimes } from 'react-icons/fa';
 
-const Sidebar = ({ items, activeTab, setActiveTab, role }) => {
+const Sidebar = ({ items, activeTab, setActiveTab, role, onClose }) => {
   const getRoleInfo = () => {
     switch (role) {
       case 'admin':
@@ -17,40 +17,57 @@ const Sidebar = ({ items, activeTab, setActiveTab, role }) => {
 
   const roleInfo = getRoleInfo();
 
+  const handleTabClick = (itemId) => {
+    setActiveTab(itemId);
+    if (onClose) onClose();
+  };
+
   return (
-    <div className="w-64 bg-white shadow-lg">
-      <div className="p-6 border-b border-gray-200">
+    <div className="w-64 bg-white shadow-lg h-full flex flex-col">
+      <div className="lg:hidden flex justify-end p-4">
+        <button onClick={onClose} className="p-2 rounded-lg hover:bg-gray-100">
+          <FaTimes className="w-5 h-5 text-gray-600" />
+        </button>
+      </div>
+
+      <div className="p-4 lg:p-6 border-b border-gray-200">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-linear-to-br from-amber-400 to-amber-600 rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold">{roleInfo.badge}</span>
+          <div className="w-8 h-8 lg:w-10 lg:h-10 bg-linear-to-br from-amber-400 to-amber-600 rounded-lg flex items-center justify-center">
+            <span className="text-white font-bold text-sm lg:text-base">{roleInfo.badge}</span>
           </div>
-          <div>
-            <h2 className="font-bold text-gray-800">{roleInfo.title}</h2>
-            <p className="text-sm text-gray-600">{roleInfo.subtitle}</p>
+          <div className="min-w-0 flex-1">
+            <h2 className="font-bold text-gray-800 text-sm lg:text-base truncate">{roleInfo.title}</h2>
+            <p className="text-xs lg:text-sm text-gray-600 truncate">{roleInfo.subtitle}</p>
           </div>
         </div>
       </div>
 
-      <nav className="p-4">
-        <ul className="space-y-2">
+      <nav className="flex-1 p-3 lg:p-4 overflow-y-auto">
+        <ul className="space-y-1 lg:space-y-2">
           {items.map((item) => (
             <li key={item.id}>
               <button
-                onClick={() => setActiveTab(item.id)}
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ${
+                onClick={() => handleTabClick(item.id)}
+                className={`w-full flex items-center gap-3 px-3 lg:px-4 py-2 lg:py-3 rounded-lg transition-all duration-300 text-sm lg:text-base ${
                   activeTab === item.id
                     ? 'bg-linear-to-r from-amber-400 to-amber-600 text-white'
                     : 'text-gray-700 hover:bg-gray-100'
                 }`}
               >
-                {item.icon && <item.icon className="w-5 h-5" />}
-                {item.name}
+                {item.icon && <item.icon className="w-4 h-4 lg:w-5 lg:h-5 shrink-0" />}
+                <span className="truncate">{item.name}</span>
               </button>
             </li>
           ))}
         </ul>
       </nav>
 
+      <div className="p-3 lg:p-4 border-t border-gray-200">
+        <button className="w-full flex items-center gap-3 px-3 lg:px-4 py-2 lg:py-3 text-gray-700 hover:bg-gray-100 rounded-lg transition-all duration-300 text-sm lg:text-base">
+          <FaSignOutAlt className="w-4 h-4 lg:w-5 lg:h-5 shrink-0" />
+          <span className="truncate">Logout</span>
+        </button>
+      </div>
     </div>
   );
 };
