@@ -1,7 +1,12 @@
 import React from 'react';
 import { FaSignOutAlt, FaTimes } from 'react-icons/fa';
+import { useAuth } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const Sidebar = ({ items, activeTab, setActiveTab, role, onClose }) => {
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+
   const getRoleInfo = () => {
     switch (role) {
       case 'admin':
@@ -22,6 +27,11 @@ const Sidebar = ({ items, activeTab, setActiveTab, role, onClose }) => {
     if (onClose) onClose();
   };
 
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
+
   return (
     <div className="w-64 bg-white shadow-lg h-full flex flex-col">
       <div className="lg:hidden flex justify-end p-4">
@@ -32,7 +42,7 @@ const Sidebar = ({ items, activeTab, setActiveTab, role, onClose }) => {
 
       <div className="p-4 lg:p-6 border-b border-gray-200">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 lg:w-10 lg:h-10 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg flex items-center justify-center">
+          <div className="w-8 h-8 lg:w-10 lg:h-10 bg-linear-to-br from-amber-400 to-amber-600 rounded-lg flex items-center justify-center">
             <span className="text-white font-bold text-sm lg:text-base">{roleInfo.badge}</span>
           </div>
           <div className="min-w-0 flex-1">
@@ -50,7 +60,7 @@ const Sidebar = ({ items, activeTab, setActiveTab, role, onClose }) => {
                 onClick={() => handleTabClick(item.id)}
                 className={`w-full flex items-center gap-3 px-3 lg:px-4 py-2 lg:py-3 rounded-lg transition-all duration-300 text-sm lg:text-base ${
                   activeTab === item.id
-                    ? 'bg-gradient-to-r from-amber-400 to-amber-600 text-white'
+                    ? 'bg-linear-to-r from-amber-400 to-amber-600 text-white'
                     : 'text-gray-700 hover:bg-gray-100'
                 }`}
               >
@@ -61,6 +71,16 @@ const Sidebar = ({ items, activeTab, setActiveTab, role, onClose }) => {
           ))}
         </ul>
       </nav>
+
+      <div className="p-3 lg:p-4 border-t border-gray-200">
+        <button 
+          onClick={handleLogout}
+          className="w-full flex items-center gap-3 px-3 lg:px-4 py-2 lg:py-3 text-gray-700 hover:bg-gray-100 rounded-lg transition-all duration-300 text-sm lg:text-base"
+        >
+          <FaSignOutAlt className="w-4 h-4 lg:w-5 lg:h-5 shrink-0" />
+          <span className="truncate">Logout</span>
+        </button>
+      </div>
     </div>
   );
 };

@@ -14,20 +14,24 @@ import ScrollToTop from "./components/Common/ScrollToTop";
 const App = () => {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-linear-to-br from-blue-50 via-white to-gray-50">
-        <Header />
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<HomePage />} /> 
-          <Route path="/about" element={<AboutUsPage />} />
-          <Route path="/academics" element={<AcademicsPage />} />
-          <Route path="/admissions" element={<AdmissionsPage />} />
-          <Route path="/gallery" element={<GalleryPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/dashboard" element={<DynamicDashboard />} />
-        </Routes>
-        <Footer />
-      </div>
+      <Routes>
+        <Route path="/dashboard" element={<DynamicDashboard />} />
+        <Route path="/*" element={
+          <div className="min-h-screen bg-linear-to-br from-blue-50 via-white to-gray-50">
+            <Header />
+            <ScrollToTop />
+            <Routes>
+              <Route path="/" element={<HomePage />} /> 
+              <Route path="/about" element={<AboutUsPage />} />
+              <Route path="/academics" element={<AcademicsPage />} />
+              <Route path="/admissions" element={<AdmissionsPage />} />
+              <Route path="/gallery" element={<GalleryPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+            </Routes>
+            <Footer />
+          </div>
+        } />
+      </Routes>
     </BrowserRouter>
   );
 };
