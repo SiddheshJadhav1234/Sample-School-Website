@@ -23,8 +23,48 @@ const Header = () => {
             </div>
           </div>
 
+          {/* MOBILE AUTH BUTTONS & HAMBURGER */}
+          <div className="lg:hidden flex items-center gap-2">
+            <button
+              onClick={() => setActiveModal("login")}
+              className="border border-amber-400 text-amber-400 px-3 py-1.5 rounded-full hover:bg-amber-400 hover:text-black transition-all duration-300 text-xs"
+            >
+              Login
+            </button>
+            <button
+              onClick={() => setActiveModal("signup")}
+              className="bg-linear-to-r from-amber-400 to-amber-600 text-black px-3 py-1.5 rounded-full font-semibold hover:shadow-lg transition-all duration-300 text-xs"
+            >
+              Sign Up
+            </button>
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="flex flex-col gap-1 p-2"
+            >
+              <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
+              <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
+              <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
+            </button>
+          </div>
+
+          {/* DESKTOP AUTH BUTTONS */}
+          <div className="hidden lg:flex items-center gap-2">
+            <button
+              onClick={() => setActiveModal("login")}
+              className="border border-amber-400 text-amber-400 px-4 py-2 rounded-full hover:bg-amber-400 hover:text-black transition-all duration-300 text-sm"
+            >
+              Login
+            </button>
+            <button
+              onClick={() => setActiveModal("signup")}
+              className="bg-linear-to-r from-amber-400 to-amber-600 text-black px-4 py-2 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 text-sm"
+            >
+              Sign Up
+            </button>
+          </div>
+
           {/* DESKTOP NAVBAR */}
-          <nav className="hidden lg:flex items-center gap-8 text-base font-medium">
+          <nav className="hidden lg:flex items-center gap-8 text-base font-medium absolute left-1/2 transform -translate-x-1/2">
             <Link to="/" className="hover:text-amber-400 transition-colors duration-300 px-2 py-1">
               Home
             </Link>
@@ -43,32 +83,7 @@ const Header = () => {
             <Link to="/contact" className="hover:text-amber-400 transition-colors duration-300 px-2 py-1">
               Contact
             </Link>
-            
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => setActiveModal("login")}
-                className="border border-amber-400 text-amber-400 px-4 py-2 rounded-full hover:bg-amber-400 hover:text-black transition-all duration-300 text-sm"
-              >
-                Login
-              </button>
-              <button
-                onClick={() => setActiveModal("signup")}
-                className="bg-linear-to-r from-amber-400 to-amber-600 text-black px-4 py-2 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 text-sm"
-              >
-                Sign Up
-              </button>
-            </div>
           </nav>
-
-          {/* MOBILE MENU BUTTON */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden flex flex-col gap-1 p-2"
-          >
-            <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
-            <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
-            <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
-          </button>
         </div>
 
         {/* MOBILE MENU */}
@@ -116,27 +131,6 @@ const Header = () => {
             >
               Contact
             </Link>
-            
-            <div className="flex flex-col gap-3 px-2 pt-2">
-              <button
-                onClick={() => {
-                  setActiveModal("login");
-                  setIsMobileMenuOpen(false);
-                }}
-                className="border border-amber-400 text-amber-400 px-4 py-2 rounded-full hover:bg-amber-400 hover:text-black transition-all duration-300 text-sm w-full"
-              >
-                Login
-              </button>
-              <button
-                onClick={() => {
-                  setActiveModal("signup");
-                  setIsMobileMenuOpen(false);
-                }}
-                className="bg-linear-to-r from-amber-400 to-amber-600 text-black px-4 py-2 rounded-full font-semibold hover:shadow-lg transition-all duration-300 text-sm w-full"
-              >
-                Sign Up
-              </button>
-            </div>
           </nav>
         </div>
       </header>
