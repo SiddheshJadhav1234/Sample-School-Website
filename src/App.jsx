@@ -8,9 +8,7 @@ import AcademicsPage from "./Pages/AcademicsPage";
 import AdmissionsPage from "./Pages/AdmissionsPage";
 import GalleryPage from "./Pages/GalleryPage";
 import ContactPage from "./Pages/ContactPage";
-import AdminDashboard from "./Pages/Dashboard/AdminDashboard";  
-import TeacherDashboard from "./Pages/Dashboard/TeacherDashboard";
-import StudentDashboard from "./Pages/Dashboard/StudentDashboard";
+import DynamicDashboard from "./Pages/Dashboard/DynamicDashboard";
 import ScrollToTop from "./components/Common/ScrollToTop";
 
 const App = () => {
@@ -26,9 +24,7 @@ const App = () => {
           <Route path="/admissions" element={<AdmissionsPage />} />
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/contact" element={<ContactPage />} />
-          <Route path="/admin-dashboard" element={<AdminDashboard />} />
-          <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
-          <Route path="/student-dashboard" element={<StudentDashboard />} />
+          <Route path="/dashboard" element={<DynamicDashboard />} />
         </Routes>
         <Footer />
       </div>

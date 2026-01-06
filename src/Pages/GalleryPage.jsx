@@ -302,7 +302,7 @@ const GalleryPage = () => {
 
           {/* Load More Button */}
           <div className="text-center mt-12">
-            <button className="bg-gradient-to-r from-amber-400 to-amber-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 cursor-pointer">
+            <button className="bg-linear-to-r from-amber-400 to-amber-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 cursor-pointer">
               Load More Images
             </button>
           </div>
@@ -338,7 +338,7 @@ const GalleryPage = () => {
                   <button className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full hover:bg-gray-200 transition-colors duration-300 cursor-pointer">
                     Download
                   </button>
-                  <button className="px-4 py-2 bg-gradient-to-r from-amber-400 to-amber-600 text-white rounded-full hover:shadow-lg transition-all duration-300 cursor-pointer">
+                  <button className="px-4 py-2 bg-linear-to-r from-amber-400 to-amber-600 text-white rounded-full hover:shadow-lg transition-all duration-300 cursor-pointer">
                     Share
                   </button>
                 </div>

@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import AuthModal from "../Auth/AuthModal";
+import { useAuth } from '../../context/AuthContext';
 
 const Header = () => {
   const [activeModal, setActiveModal] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { user, logout } = useAuth();
 
   return (
     <>
@@ -25,18 +27,28 @@ const Header = () => {
 
           {/* MOBILE AUTH BUTTONS & HAMBURGER */}
           <div className="lg:hidden flex items-center gap-2">
-            <button
-              onClick={() => setActiveModal("login")}
-              className="border border-amber-400 text-amber-400 cursor-pointer px-3 py-1.5 rounded-full hover:bg-amber-400 hover:text-black transition-all duration-300 text-xs"
-            >
-              Login
-            </button>
-            <button
-              onClick={() => setActiveModal("signup")}
-              className="bg-linear-to-r from-amber-400 to-amber-600 text-black cursor-pointer px-3 py-1.5 rounded-full font-semibold hover:shadow-lg transition-all duration-300 text-xs"
-            >
-              Sign Up
-            </button>
+            {/** Show Dashboard/Logout when logged in, else show Login/Signup */}
+            {user ? (
+              <>
+                <button onClick={logout} className="border border-amber-400 text-amber-400 cursor-pointer px-3 py-1.5 rounded-full hover:bg-amber-400 hover:text-black transition-all duration-300 text-xs">Logout</button>
+              </>
+            ) : (
+              <>
+                <button
+                  onClick={() => setActiveModal("login")}
+                  className="border border-amber-400 text-amber-400 cursor-pointer px-3 py-1.5 rounded-full hover:bg-amber-400 hover:text-black transition-all duration-300 text-xs"
+                >
+                  Login
+                </button>
+                <button
+                  onClick={() => setActiveModal("signup")}
+                  className="bg-linear-to-r from-amber-400 to-amber-600 text-black cursor-pointer px-3 py-1.5 rounded-full font-semibold hover:shadow-lg transition-all duration-300 text-xs"
+                >
+                  Sign Up
+                </button>
+              </>
+            )}
+
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="flex flex-col gap-1 p-2 cursor-pointer"
@@ -49,18 +61,26 @@ const Header = () => {
 
           {/* DESKTOP AUTH BUTTONS */}
           <div className="hidden lg:flex items-center gap-2">
-            <button
-              onClick={() => setActiveModal("login")}
-              className="border border-amber-400 text-amber-400 cursor-pointer px-4 py-2 rounded-full hover:bg-amber-400 hover:text-black transition-all duration-300 text-sm"
-            >
-              Login
-            </button>
-            <button
-              onClick={() => setActiveModal("signup")}
-              className="bg-linear-to-r from-amber-400 to-amber-600 text-black cursor-pointer px-4 py-2 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 text-sm"
-            >
-              Sign Up
-            </button>
+            {user ? (
+              <>
+                <button onClick={logout} className="border border-amber-400 text-amber-400 cursor-pointer px-4 py-2 rounded-full hover:bg-amber-400 hover:text-black transition-all duration-300 text-sm">Logout</button>
+              </>
+            ) : (
+              <>
+                <button
+                  onClick={() => setActiveModal("login")}
+                  className="border border-amber-400 text-amber-400 cursor-pointer px-4 py-2 rounded-full hover:bg-amber-400 hover:text-black transition-all duration-300 text-sm"
+                >
+                  Login
+                </button>
+                <button
+                  onClick={() => setActiveModal("signup")}
+                  className="bg-linear-to-r from-amber-400 to-amber-600 text-black cursor-pointer px-4 py-2 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 text-sm"
+                >
+                  Sign Up
+                </button>
+              </>
+            )}
           </div>
 
           {/* DESKTOP NAVBAR */}

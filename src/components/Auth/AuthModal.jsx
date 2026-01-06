@@ -1,13 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useAuth } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
-const AuthModal = ({ onClose }) => {
-  const [isSignup, setIsSignup] = useState(true);
+const AuthModal = ({ activeModal, onClose }) => {
+  const { login } = useAuth();
+  const navigate = useNavigate();
+  const [isSignup, setIsSignup] = useState(activeModal === 'signup');
+
+  useEffect(() => {
+    setIsSignup(activeModal === 'signup');
+  }, [activeModal]);
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+  const [role, setRole] = useState('student');
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    // Mock login: set name from email or input, set role
+    login({ name: name || email.split('@')[0] || 'User', role }, navigate);
+    onClose();
+  };
+
+  const handleSignup = (e) => {
+    e.preventDefault();
+    // Mock signup: immediately login the user
+    login({ name: name || email.split('@')[0] || 'User', role }, navigate);
+    onClose();
+  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
-      {/* Backdrop */}
+      {/* Backdrop (hidden on small screens; overlay only on md+) */}
       <div
-        className="absolute inset-0 bg-black/50 backdrop-blur-md"
+        className="absolute inset-0 bg-black/50 backdrop-blur-md hidden md:block"
         onClick={onClose}
       />
 
@@ -17,17 +44,27 @@ const AuthModal = ({ onClose }) => {
         <div
           className={`relative md:absolute top-0 left-0 h-full w-full md:w-1/2 flex items-center justify-center transition-all duration-500 ${isSignup ? 'hidden md:block md:translate-x-full md:opacity-0 md:z-10' : 'block md:translate-x-0 md:opacity-100 md:z-20'}`}
         >
-          <form className="w-full max-w-md px-6 md:px-10 text-center flex flex-col items-center justify-center gap-3 py-6 mx-auto">
+          <form onSubmit={handleLogin} className="w-full max-w-md px-6 md:px-10 text-center flex flex-col items-center justify-center gap-3 py-6 mx-auto">
             <h1 className="text-2xl font-bold mb-4">Login To Your Account</h1>
             <input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="max-w-md w-full mb-2 px-4 py-2 bg-gray-100 rounded"
               placeholder="Email"
             />
             <input
-              className="max-w-md w-full mb-4 px-4 py-2 bg-gray-100 rounded"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="max-w-md w-full mb-2 px-4 py-2 bg-gray-100 rounded"
               placeholder="Password"
             />
-            <button className="border border-black text-black px-8 py-2 rounded-full cursor-pointer max-w-md w-full sm:w-auto">
+            <select value={role} onChange={(e) => setRole(e.target.value)} className="max-w-md w-full mb-2 px-4 py-2 bg-gray-100 rounded">
+              <option value="student">Student</option>
+              <option value="teacher">Teacher</option>
+              <option value="admin">Admin</option>
+              <option value="parent">Parent</option>
+            </select>
+            <button type="submit" className="border border-black text-black px-8 py-2 rounded-full cursor-pointer max-w-md w-full sm:w-auto">
               Login
             </button>
             <div className="mt-4 text-sm">
@@ -41,24 +78,32 @@ const AuthModal = ({ onClose }) => {
         <div
           className={`relative md:absolute h-full w-full md:w-1/2 flex items-center justify-center transition-all duration-500 ${isSignup ? 'block md:translate-x-full md:opacity-100 md:z-20' : 'hidden md:block md:translate-x-0 md:opacity-0 md:z-10'}`}
         >
-          <form className="w-full max-w-md px-6 md:px-10 text-center flex flex-col items-center justify-center gap-3 py-6 mx-auto">
+          <form onSubmit={handleSignup} className="w-full max-w-md px-6 md:px-10 text-center flex flex-col items-center justify-center gap-3 py-6 mx-auto">
             <h1 className="text-2xl font-bold mb-4">Create Your New Account</h1>
             <input
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="max-w-md w-full mb-2 px-4 py-2 bg-gray-100 rounded"
+              placeholder="Name"
+            />
+            <input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="max-w-md w-full mb-2 px-4 py-2 bg-gray-100 rounded"
               placeholder="Email"
             />
             <input
-              className="max-w-md w-full mb-2 px-4 py-2 bg-gray-100 rounded"
-              placeholder="Mobile No"
-            />
-            <input
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="max-w-md w-full mb-2 px-4 py-2 bg-gray-100 rounded"
               placeholder="Password"
             />
-            <input
-              className="max-w-md w-full mb-4 px-4 py-2 bg-gray-100 rounded"
-              placeholder="Confirm Password"
-            />
+            <select value={role} onChange={(e) => setRole(e.target.value)} className="max-w-md w-full mb-2 px-4 py-2 bg-gray-100 rounded">
+              <option value="student">Student</option>
+              <option value="teacher">Teacher</option>
+              <option value="admin">Admin</option>
+              <option value="parent">Parent</option>
+            </select>
             <button className="border border-black text-black px-8 py-2 rounded-full cursor-pointer max-w-md w-full sm:w-auto">
               Sign Up
             </button>
