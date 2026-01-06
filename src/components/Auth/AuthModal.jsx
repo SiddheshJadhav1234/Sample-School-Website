@@ -12,69 +12,66 @@ const AuthModal = ({ onClose }) => {
       />
 
       {/* Container */}
-      <div className="relative w-3xl min-h-100 bg-white rounded-xl shadow-2xl overflow-hidden">
+      <div className="relative w-full max-w-3xl mx-4 md:w-3xl min-h-112 py-6 bg-white rounded-xl shadow-2xl overflow-hidden">
         {/* LOGIN FORM */}
         <div
-          className={`absolute top-0 left-0 h-full w-1/2 flex items-center justify-center transition-all duration-500
-          ${
-            isSignup
-              ? "translate-x-full opacity-0 z-10"
-              : "translate-x-0 opacity-100 z-20"
-          }`}
+          className={`relative md:absolute top-0 left-0 h-full w-full md:w-1/2 flex items-center justify-center transition-all duration-500 ${isSignup ? 'hidden md:block md:translate-x-full md:opacity-0 md:z-10' : 'block md:translate-x-0 md:opacity-100 md:z-20'}`}
         >
-          <form className="w-full px-10 text-center">
+          <form className="w-full max-w-md px-6 md:px-10 text-center flex flex-col items-center justify-center gap-3 py-6 mx-auto">
             <h1 className="text-2xl font-bold mb-4">Login To Your Account</h1>
             <input
-              className="w-full mb-2 px-4 py-2 bg-gray-100"
+              className="max-w-md w-full mb-2 px-4 py-2 bg-gray-100 rounded"
               placeholder="Email"
             />
             <input
-              className="w-full mb-4 px-4 py-2 bg-gray-100"
+              className="max-w-md w-full mb-4 px-4 py-2 bg-gray-100 rounded"
               placeholder="Password"
             />
-            <button className="border border-black text-black px-8 py-2 rounded-full cursor-pointer">
+            <button className="border border-black text-black px-8 py-2 rounded-full cursor-pointer max-w-md w-full sm:w-auto">
               Login
             </button>
+            <div className="mt-4 text-sm">
+              <span>Don't have an account? </span>
+              <button type="button" onClick={() => setIsSignup(true)} className="text-amber-600 font-semibold ml-1 cursor-pointer">Sign up</button>
+            </div>
           </form>
         </div>
 
         {/* SIGNUP FORM */}
         <div
-          className={`absolute h-full w-1/2 flex items-center justify-center transition-all duration-500
-          ${
-            isSignup
-              ? "translate-x-full opacity-100 z-20"
-              : "translate-x-0 opacity-0 z-10"
-          }`}
+          className={`relative md:absolute h-full w-full md:w-1/2 flex items-center justify-center transition-all duration-500 ${isSignup ? 'block md:translate-x-full md:opacity-100 md:z-20' : 'hidden md:block md:translate-x-0 md:opacity-0 md:z-10'}`}
         >
-          <form className="w-full px-10 text-center ">
+          <form className="w-full max-w-md px-6 md:px-10 text-center flex flex-col items-center justify-center gap-3 py-6 mx-auto">
             <h1 className="text-2xl font-bold mb-4">Create Your New Account</h1>
             <input
-              className="w-full mb-2 px-4 py-2 bg-gray-100"
+              className="max-w-md w-full mb-2 px-4 py-2 bg-gray-100 rounded"
               placeholder="Email"
             />
             <input
-              className="w-full mb-2 px-4 py-2 bg-gray-100"
+              className="max-w-md w-full mb-2 px-4 py-2 bg-gray-100 rounded"
               placeholder="Mobile No"
             />
             <input
-              className="w-full mb-2 px-4 py-2 bg-gray-100"
+              className="max-w-md w-full mb-2 px-4 py-2 bg-gray-100 rounded"
               placeholder="Password"
             />
             <input
-              className="w-full mb-4 px-4 py-2 bg-gray-100"
+              className="max-w-md w-full mb-4 px-4 py-2 bg-gray-100 rounded"
               placeholder="Confirm Password"
             />
-            <button className="border border-black text-black px-8 py-2 rounded-full cursor-pointer">
+            <button className="border border-black text-black px-8 py-2 rounded-full cursor-pointer max-w-md w-full sm:w-auto">
               Sign Up
             </button>
+            <div className="mt-4 text-sm">
+              <span>Already have an account? </span>
+              <button type="button" onClick={() => setIsSignup(false)} className="text-amber-600 font-semibold ml-1 cursor-pointer">Login</button>
+            </div>
           </form>
         </div>
 
         {/* OVERLAY CONTAINER */}
         <div
-          className={`absolute top-0 left-1/2 w-1/2 h-full overflow-hidden transition-transform duration-500 z-30
-          ${isSignup ? "-translate-x-full" : ""}`}
+          className={`hidden md:block md:absolute md:top-0 md:left-1/2 md:w-1/2 md:h-full overflow-hidden transition-transform duration-500 z-30 ${isSignup ? 'md:-translate-x-full' : ''}`}
         >
           <div
             className={`relative -left-full w-[200%] h-full bg-linear-to-r from-amber-500 via-red-400 to-amber-500
