@@ -1,26 +1,28 @@
-import React from 'react'
-import GetStartedToday from '../components/Home/GetStartedToday'
-import SchoolImages from '../components/Home/SchoolImages'
-import Slogan from '../components/Home/Slogan'
-import WhatOurclientSays from '../components/Home/WhatOurClientSays'
-import WhyChooseUs from '../components/Home/WhyChooseUs'
-import Graph from '../components/Home/graph'
-import Header from '../components/Layouts/Header'
-import Footer from '../components/Layouts/Footer'
+import React from 'react';
+import HeroSection from '../components/Home/HeroSection';
+import AboutPreview from '../components/Home/AboutPreview';
+import OurJourneyTimeline from '../components/Home/OurJourneyTimeline';
+import MissionVisionCards from '../components/Home/MissionVisionCards';
+import FacilitiesSlider from '../components/Home/FacilitiesSlider';
+import WhyChooseUs from '../components/Home/WhyChooseUs';
+import PrincipalMessage from '../components/Home/PrincipalMessage';
+import Testimonials from '../components/Home/Testimonials';
+import GetStartedCTA from '../components/Home/GetStartedCTA';
 
 const HomePage = () => {
   return (
-    <div>
-      <Header />
-      <Slogan />
-      <SchoolImages />
-      <Graph />
+    <div className="overflow-hidden">
+      <HeroSection />
+      <AboutPreview />
+      <OurJourneyTimeline />
+      <MissionVisionCards />
+      <FacilitiesSlider />
       <WhyChooseUs />
-      <WhatOurclientSays />
-      <GetStartedToday />
-      <Footer />
+      <PrincipalMessage />
+      <Testimonials />
+      <GetStartedCTA />
     </div>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;
