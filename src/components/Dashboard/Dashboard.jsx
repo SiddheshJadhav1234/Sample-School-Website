@@ -1,13 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Sidebar from './Sidebar';
 import Header from './Header';
 import StatsGrid from './StatsGrid';
 import TableSection from './TableSection';
-import ChartSection from './ChartSection';
+
+import ScheduleSection from './ScheduleSection';
+import FinanceSection from './FinanceSection';
+import ReportsSection from './ReportsSection';
+import SettingsSection from './SettingsSection';
+import LessonSection from './LessonSection';
+import TeacherScheduleSection from './TeacherScheduleSection';
+import GradesSection from './GradesSection';
+import StudentScheduleSection from './StudentScheduleSection';
+import AchievementsSection from './AchievementsSection';
+import EmptySection from './EmptySection';
 
 const Dashboard = ({ role, data }) => {
   const [activeTab, setActiveTab] = useState('overview');
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  // Reset state when role changes
+  useEffect(() => {
+    setActiveTab('overview');
+    setSidebarOpen(false);
+  }, [role]);
+
+  // Component mapping - All components imported here
+  const componentMap = {
+    TableSection,
+    ScheduleSection,
+    FinanceSection,
+    ReportsSection,
+    SettingsSection,
+    LessonSection,
+    TeacherScheduleSection,
+    GradesSection,
+    StudentScheduleSection,
+    AchievementsSection,
+    EmptySection
+  };
 
   if (!data || !data.sidebarItems || !data.header) {
     return <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -19,8 +50,15 @@ const Dashboard = ({ role, data }) => {
     if (!data.sections || !data.sections[activeTab]) {
       return <div className="text-gray-600">No content available for this section.</div>;
     }
-    const section = data.sections[activeTab];
-    return section();
+    
+    const sectionData = data.sections[activeTab];
+    const ComponentToRender = componentMap[sectionData.component];
+    
+    if (!ComponentToRender) {
+      return <div className="text-gray-600">Component not found: {sectionData.component}</div>;
+    }
+    
+    return <ComponentToRender {...sectionData.props} />;
   };
 
   return (
