@@ -13,6 +13,7 @@ const AuthModal = ({ activeModal, onClose }) => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmpassword, setConfirmPassword] = useState('');
   const [name, setName] = useState('');
   const [role, setRole] = useState('student');
 
@@ -98,12 +99,12 @@ const AuthModal = ({ activeModal, onClose }) => {
               className="max-w-md w-full mb-2 px-4 py-2 bg-gray-100 rounded"
               placeholder="Password"
             />
-            <select value={role} onChange={(e) => setRole(e.target.value)} className="max-w-md w-full mb-2 px-4 py-2 bg-gray-100 rounded">
-              <option value="student">Student</option>
-              <option value="teacher">Teacher</option>
-              <option value="admin">Admin</option>
-              <option value="parent">Parent</option>
-            </select>
+            <input
+              value={confirmpassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              className="max-w-md w-full mb-2 px-4 py-2 bg-gray-100 rounded"
+              placeholder="Confirm Password"
+            />
             <button className="border border-black text-black px-8 py-2 rounded-full cursor-pointer max-w-md w-full sm:w-auto">
               Sign Up
             </button>

@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const HeroSection = () => {
   const [currentSlogan, setCurrentSlogan] = useState(0);
+  const videoRef = useRef(null);
   
   const slogans = [
     "Where Dreams Take Flight",
@@ -16,16 +17,35 @@ const HeroSection = () => {
     }, 3000);
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      video.play();
+      
+      const handlePause = () => {
+        video.play();
+      };
+      
+      video.addEventListener('pause', handlePause);
+      
+      return () => {
+        video.removeEventListener('pause', handlePause);
+      };
+    }
+  }, []);
  
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Video */}
       <video
+        ref={videoRef}
         className="absolute top-0 left-0 w-full h-full object-cover"
         autoPlay
         loop
         muted
         playsInline
+        preload="auto"
         src="https://pratibhaintschool.org/wp-content/uploads/2025/02/PIS-Mobile-View-Video.mp4"
       />
       

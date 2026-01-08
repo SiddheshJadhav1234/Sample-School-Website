@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaCalendarAlt, FaArrowRight, FaGraduationCap, FaSchool, FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import AuthModal from '../Auth/AuthModal';
 
 const GetStartedCTA = () => {
+  const [activeModal, setActiveModal] = useState(null);
+
   return (
+    <>
     <section className="py-20 bg-gray-50 relative">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-12 px-2">
@@ -45,12 +49,11 @@ const GetStartedCTA = () => {
             </div>
 
             <Link 
-              to="/admissions"
-              className="w-full bg-amber-600 text-white py-2 sm:py-3 rounded-lg text-sm sm:text-base font-semibold hover:bg-amber-700 transition-colors duration-200 flex items-center justify-center gap-2"
-            >
-              Apply Now
-              <FaArrowRight className="w-3 sm:w-4 h-3 sm:h-4" />
-            </Link>
+            to="/admissions"
+            className="w-full bg-amber-600 text-white py-2 sm:py-3 rounded-lg text-sm sm:text-base font-semibold hover:bg-amber-700 transition-colors duration-200 flex items-center justify-center gap-2 cursor-pointer"
+          >
+            Apply now
+          </Link>
           </div>
 
           {/* Visit Card */}
@@ -122,9 +125,15 @@ const GetStartedCTA = () => {
 
         {/* Quick Actions */}
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center px-2 sm:px-0">
+          <button
+            onClick={() => setActiveModal("signup")}
+            className="bg-amber-600 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-lg text-sm sm:text-base font-semibold hover:bg-amber-700 transition-colors duration-200 text-center cursor-pointer"
+          >
+            Get Started
+          </button>
           <Link 
             to="/contact"
-            className="bg-amber-600 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-lg text-sm sm:text-base font-semibold hover:bg-amber-700 transition-colors duration-200 text-center"
+            className="border-2 border-amber-600 text-amber-600 px-6 sm:px-8 py-2 sm:py-3 rounded-lg text-sm sm:text-base font-semibold hover:bg-amber-600 hover:text-white transition-colors duration-200 text-center"
           >
             Contact Us
           </Link>
@@ -150,6 +159,14 @@ const GetStartedCTA = () => {
         </div> 
       </div>
     </section>
+
+    {activeModal && (
+      <AuthModal
+        activeModal="signup"
+        onClose={() => setActiveModal(null)}
+      />
+    )}
+    </>
   );
 };
 
