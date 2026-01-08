@@ -6,7 +6,7 @@ const StudentScheduleSection = ({ className, schedule }) => {
 
   return (
     <div className="bg-white p-6 rounded-2xl shadow-lg">
-      <h2 className="text-2xl font-bold text-gray-800 mb-6">{title}</h2>
+      <h2 className="text-2xl font-bold text-amber-700 mb-6">{title}</h2>
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
         {schedule.map((daySchedule, index) => (
           <div key={index} className="p-4 border border-gray-200 rounded-lg">

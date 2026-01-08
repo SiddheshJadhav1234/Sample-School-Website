@@ -472,19 +472,7 @@ const DynamicDashboard = () => {
                       { time: '1:00 PM', subject: 'Sports' },
                       { time: '2:00 PM', subject: 'Free Time' }
                     ] 
-                  },
-                  { 
-                    day: 'Sunday', 
-                    periods: [
-                      { time: '10:00 AM', subject: 'Holiday' },
-                      { time: '11:00 AM', subject: 'Family Time' },
-                      { time: '12:00 PM', subject: 'Rest' },
-                      { time: '1:00 PM', subject: 'Lunch' },
-                      { time: '2:00 PM', subject: 'Play Time' },
-                      { time: '3:00 PM', subject: 'Study Time' },
-                      { time: '4:00 PM', subject: 'Free Time' }
-                    ] 
-                  }
+                  }                  
                 ]
               }
             },
