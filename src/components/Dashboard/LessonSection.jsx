@@ -5,7 +5,7 @@ const LessonSection = ({ lessons }) => {
     <div className="bg-white p-3 sm:p-6 rounded-xl sm:rounded-2xl shadow-lg">
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 sm:mb-6 gap-3">
         <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Lesson Plans</h2>
-        <button className="bg-gradient-to-r from-amber-400 to-amber-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 text-sm sm:text-base w-full sm:w-auto">Create New Lesson</button>
+        <button className="bg-linear-to-r from-amber-400 to-amber-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 text-sm sm:text-base w-full sm:w-auto">Create New Lesson</button>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
         {lessons.map((lesson, index) => (

@@ -2,7 +2,7 @@ import React from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { Navigate } from 'react-router-dom';
 import Dashboard from '../../components/Dashboard/Dashboard';
-import { FaUsers, FaChalkboardTeacher, FaBook, FaCalendarAlt, FaClipboardList, FaGraduationCap, FaTrophy, FaFileAlt, FaCog, FaChartBar, FaDollarSign, FaBell } from 'react-icons/fa';
+import { FaUsers, FaChalkboardTeacher, FaBook, FaCalendarAlt, FaClipboardList, FaGraduationCap, FaTrophy, FaFileAlt, FaCog, FaChartBar, FaDollarSign, FaBell, FaClipboard } from 'react-icons/fa';
 
 const DynamicDashboard = () => {
   const { user } = useAuth();
@@ -213,6 +213,7 @@ const DynamicDashboard = () => {
             { id: 'students', name: 'My Students', icon: FaUsers },
             { id: 'lessons', name: 'Lesson Plans', icon: FaBook },
             { id: 'assignments', name: 'Assignments', icon: FaClipboardList },
+            { id: 'testplans', name: 'Test Plans', icon: FaClipboard },
             { id: 'grades', name: 'Grades', icon: FaFileAlt },
             { id: 'schedule', name: 'My Schedule', icon: FaCalendarAlt }
           ],
@@ -294,6 +295,43 @@ const DynamicDashboard = () => {
                 showAddButton: true,
                 showSearch: true,
                 actions: ['view', 'edit', 'delete']
+              }
+            },
+            testplans: {
+              component: 'TestPlansSection',
+              props: {
+                testPlans: [
+                  {
+                    id: 1,
+                    title: 'Mathematics Unit Test - Fractions',
+                    subject: 'Mathematics',
+                    class: '5A',
+                    date: '2024-01-25',
+                    duration: '60 minutes',
+                    totalMarks: 50,
+                    status: 'Scheduled'
+                  },
+                  {
+                    id: 2,
+                    title: 'Science Quiz - Solar System',
+                    subject: 'Science',
+                    class: '5B',
+                    date: '2024-01-28',
+                    duration: '45 minutes',
+                    totalMarks: 30,
+                    status: 'Draft'
+                  },
+                  {
+                    id: 3,
+                    title: 'English Grammar Test',
+                    subject: 'English',
+                    class: '4A',
+                    date: '2024-01-30',
+                    duration: '40 minutes',
+                    totalMarks: 40,
+                    status: 'Completed'
+                  }
+                ]
               }
             },
             grades: {

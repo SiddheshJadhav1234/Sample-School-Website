@@ -3,7 +3,6 @@ import Sidebar from './Sidebar';
 import Header from './Header';
 import StatsGrid from './StatsGrid';
 import TableSection from './TableSection';
-
 import ScheduleSection from './ScheduleSection';
 import FinanceSection from './FinanceSection';
 import ReportsSection from './ReportsSection';
@@ -13,6 +12,7 @@ import TeacherScheduleSection from './TeacherScheduleSection';
 import GradesSection from './GradesSection';
 import StudentScheduleSection from './StudentScheduleSection';
 import AchievementsSection from './AchievementsSection';
+import TestPlansSection from './TestPlansSection';
 import EmptySection from './EmptySection';
 
 const Dashboard = ({ role, data }) => {
@@ -37,6 +37,7 @@ const Dashboard = ({ role, data }) => {
     GradesSection,
     StudentScheduleSection,
     AchievementsSection,
+    TestPlansSection,
     EmptySection
   };
 
