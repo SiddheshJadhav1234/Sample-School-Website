@@ -80,11 +80,7 @@ const GalleryGrid = ({ selectedCategory, setSelectedImage }) => {
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <button className="bg-linear-to-r from-amber-400 to-amber-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 cursor-pointer">
-            Load More Images
-          </button>
-        </div>
+        
       </div>
     </section>
   );

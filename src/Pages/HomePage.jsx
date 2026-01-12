@@ -10,9 +10,22 @@ import Testimonials from '../components/Home/Testimonials';
 import GetStartedCTA from '../components/Home/GetStartedCTA';
 
 const HomePage = () => {
+  const handleExploreClick = () => {
+    // Additional logic if needed when explore is clicked
+    console.log('Explore clicked');
+  };
+
+  const handleLoginClick = () => {
+    // Additional logic if needed when login is clicked
+    console.log('Login clicked');
+  };
+
   return (
     <div className="overflow-hidden">
-      <HeroSection />
+      <HeroSection 
+        onExploreClick={handleExploreClick}
+        onLoginClick={handleLoginClick}
+      />
       <AboutPreview />
       <OurJourneyTimeline />
       <MissionVisionCards />

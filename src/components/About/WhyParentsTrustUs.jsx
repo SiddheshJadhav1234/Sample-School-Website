@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import AuthModal from '../Auth/AuthModal';
 
 const WhyParentsTrustUs = () => {
+  const [activeModal, setActiveModal] = useState(null);
+  const navigate = useNavigate();
+
   return (
+    <>
     <section className="py-20 px-6 md:px-16">
       <div className="max-w-4xl mx-auto bg-amber-50 rounded-3xl p-10 md:p-14
                       shadow-xl border border-amber-200 text-center">
@@ -19,15 +25,24 @@ const WhyParentsTrustUs = () => {
         </p>
 
         <button
+          onClick={() => setActiveModal("signup")}
           className="mt-8 bg-amber-500 text-black px-10 py-3 rounded-full
                      font-semibold shadow-md
                      hover:shadow-xl hover:scale-105
-                     transition-all duration-300"
+                     transition-all duration-300 cursor-pointer"
         >
           Join Our School
         </button>
       </div>
     </section>
+
+    {activeModal && (
+      <AuthModal
+        activeModal="signup"
+        onClose={() => setActiveModal(null)}
+      />
+    )}
+    </>
   );
 };
 

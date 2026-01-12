@@ -8,7 +8,7 @@ const GetStartedCTA = () => {
 
   return (
     <>
-    <section className="py-20 bg-gray-50 relative">
+    <section id="cta-section" className="py-20 bg-gray-50 relative">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-12 px-2">
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
@@ -83,7 +83,19 @@ const GetStartedCTA = () => {
               </div>
             </div>
 
-            <button className="w-full bg-amber-600 text-white py-2 sm:py-3 rounded-lg text-sm sm:text-base font-semibold hover:bg-amber-700 transition-colors duration-200 flex items-center justify-center gap-2 cursor-pointer">
+            <button 
+              onClick={() => {
+                // Scroll to contact section or open contact modal
+                const contactSection = document.getElementById('contact-section');
+                if (contactSection) {
+                  contactSection.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                  // If no contact section, you could open a contact modal or redirect
+                  window.location.href = '/contact';
+                }
+              }}
+              className="w-full bg-amber-600 text-white py-2 sm:py-3 rounded-lg text-sm sm:text-base font-semibold hover:bg-amber-700 transition-colors duration-200 flex items-center justify-center gap-2 cursor-pointer"
+            >
               <FaCalendarAlt className="w-3 sm:w-4 h-3 sm:h-4" />
               Book a Visit
             </button>

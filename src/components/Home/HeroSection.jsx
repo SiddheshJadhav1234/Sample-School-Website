@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-const HeroSection = () => {
+const HeroSection = ({ onLoginClick, onExploreClick }) => {
   const [currentSlogan, setCurrentSlogan] = useState(0);
   const videoRef = useRef(null);
   
@@ -34,6 +34,23 @@ const HeroSection = () => {
       };
     }
   }, []);
+
+  const handleExploreClick = () => {
+    // Scroll to about section
+    const aboutSection = document.getElementById('about-section');
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    if (onExploreClick) onExploreClick();
+  };
+
+  const handleWatchStory = () => {
+    // Scroll to journey timeline section
+    const journeySection = document.getElementById('journey-section');
+    if (journeySection) {
+      journeySection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
  
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -78,10 +95,16 @@ const HeroSection = () => {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fadeInUp px-4">
-          <button className="w-full sm:w-auto bg-white text-amber-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-lg cursor-pointer">
+          <button 
+            onClick={handleExploreClick}
+            className="w-full sm:w-auto bg-white text-amber-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-lg cursor-pointer"
+          >
             Explore Our School
           </button>
-          <button className="w-full sm:w-auto border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-white hover:text-amber-600 transform hover:scale-105 transition-all duration-300 cursor-pointer">
+          <button 
+            onClick={handleWatchStory}
+            className="w-full sm:w-auto border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-white hover:text-amber-600 transform hover:scale-105 transition-all duration-300 cursor-pointer"
+          >
             Watch Our Story
           </button>
         </div>

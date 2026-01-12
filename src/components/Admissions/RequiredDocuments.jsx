@@ -37,7 +37,20 @@ const RequiredDocuments = () => {
             </div>
 
             <div className="mt-8">
-              <button className="bg-linear-to-r from-amber-400 to-amber-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center gap-2 cursor-pointer">
+              <button 
+                onClick={() => {
+                  const content = `M.M. VIDYA MANDIR - DOCUMENT CHECKLIST\n\nRequired Documents for Admission:\n\n1. Birth Certificate (Original + 2 copies)\n2. Previous School Transfer Certificate (if applicable)\n3. Previous School Report Card/Progress Report\n4. Address Proof (Utility bill/Rent agreement)\n5. Parent's ID Proof (Aadhar/Passport/Driving License)\n6. Medical Certificate from registered doctor\n7. Recent passport size photographs (4 copies)\n8. Caste Certificate (if applicable for reservation)\n\nNote: Please bring original documents for verification along with photocopies.\n\nContact: +91 98765 43210\nEmail: admissions@mmvidyamandir.edu.in`;
+                  const blob = new Blob([content], { type: 'text/plain' });
+                  const link = document.createElement('a');
+                  link.href = URL.createObjectURL(blob);
+                  link.download = 'MM-Vidya-Mandir-Document-Checklist.txt';
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
+                  URL.revokeObjectURL(link.href);
+                }}
+                className="bg-linear-to-r from-amber-400 to-amber-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center gap-2 cursor-pointer"
+              >
                 <FaDownload className="w-4 h-4" />
                 Download Document Checklist
               </button>

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FaGraduationCap, FaLock, FaMagic, FaLeaf } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const values = [
   { 
@@ -31,6 +32,7 @@ const values = [
 const OurValues = () => {
   const ref = useRef(null);
   const [show, setShow] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -111,7 +113,10 @@ const OurValues = () => {
           <div className="bg-white/70 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-amber-100 max-w-2xl mx-auto">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">Experience Our Values in Action</h3>
             <p className="text-gray-600 mb-6">Visit our campus to see how these core values shape every interaction and learning experience.</p>
-            <button className="bg-linear-to-r from-amber-500 to-orange-600 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+            <button 
+              onClick={() => navigate('/contact')}
+              className="bg-linear-to-r from-amber-500 to-orange-600 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+            >
               Schedule a Visit
             </button>
           </div>

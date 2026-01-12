@@ -11,7 +11,7 @@ const AboutPreview = () => {
   ];
 
   return (
-    <section className="py-20 bg-linear-to-br from-white via-amber-50 to-white">
+    <section id="about-section" className="py-20 bg-linear-to-br from-white via-amber-50 to-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Content */}

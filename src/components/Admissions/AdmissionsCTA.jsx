@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import AuthModal from '../Auth/AuthModal';
 
 const AdmissionsCTA = () => {
+  const [activeModal, setActiveModal] = useState(null);
+  const navigate = useNavigate();
+
   return (
+    <>
     <section className="py-20 bg-linear-to-br from-amber-400 to-amber-600">
       <div className="max-w-4xl mx-auto px-6 text-center text-white">
         <h2 className="text-3xl md:text-4xl font-bold mb-6">
@@ -11,18 +17,35 @@ const AdmissionsCTA = () => {
           Take the first step towards your child's bright future. Our admission team is ready to help you.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button className="bg-white text-amber-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 cursor-pointer">
+          <button 
+            onClick={() => setActiveModal("signup")}
+            className="bg-white text-amber-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 cursor-pointer"
+          >
             Start Application
           </button>
-          <button className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-amber-600 transform hover:scale-105 transition-all duration-300 cursor-pointer">
+          <button 
+            onClick={() => navigate('/contact')}
+            className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-amber-600 transform hover:scale-105 transition-all duration-300 cursor-pointer"
+          >
             Schedule Visit
           </button>
-          <button className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-amber-600 transform hover:scale-105 transition-all duration-300 cursor-pointer">
+          <button 
+            onClick={() => window.open('tel:+919876543210')}
+            className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-amber-600 transform hover:scale-105 transition-all duration-300 cursor-pointer"
+          >
             Call Us Now
           </button>
         </div>
       </div>
     </section>
+
+    {activeModal && (
+      <AuthModal
+        activeModal="signup"
+        onClose={() => setActiveModal(null)}
+      />
+    )}
+    </>
   );
 };
 

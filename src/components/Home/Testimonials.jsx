@@ -185,7 +185,17 @@ const Testimonials = () => {
             <p className="text-lg mb-6 opacity-90">
               Experience the difference that quality education and caring teachers can make.
             </p>
-            <button className="bg-white text-amber-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 cursor-pointer">
+            <button 
+              onClick={() => {
+                const ctaSection = document.getElementById('cta-section');
+                if (ctaSection) {
+                  ctaSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } else {
+                  window.location.href = '/contact';
+                }
+              }}
+              className="bg-white text-amber-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 cursor-pointer"
+            >
               Schedule a School Visit
             </button>
           </div>

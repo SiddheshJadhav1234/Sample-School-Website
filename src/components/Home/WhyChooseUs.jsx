@@ -127,10 +127,23 @@ const WhyChooseUs = () => {
               Join hundreds of families who have chosen excellence for their children's education.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-              <button className="bg-linear-to-r from-amber-400 to-amber-600 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 ml-4 cursor-pointer">
+              <button 
+                onClick={() => {
+                  const ctaSection = document.getElementById('cta-section');
+                  if (ctaSection) {
+                    ctaSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                className="bg-linear-to-r from-amber-400 to-amber-600 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 ml-4 cursor-pointer"
+              >
                 Schedule a Visit
               </button>
-              <button className="bg-linear-to-r from-amber-400 to-amber-600 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 ml-4 cursor-pointer">
+              <button 
+                onClick={() => {
+                  window.location.href = '/admissions';
+                }}
+                className="bg-linear-to-r from-amber-400 to-amber-600 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 ml-4 cursor-pointer"
+              >
                 Apply Now
               </button>
             </div>

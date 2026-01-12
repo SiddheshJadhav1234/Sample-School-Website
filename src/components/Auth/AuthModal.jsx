@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { authAPI } from '../../services/api';
 
 const AuthModal = ({ activeModal, onClose }) => {
   const { login } = useAuth();
   const navigate = useNavigate();
   const [isSignup, setIsSignup] = useState(activeModal === 'signup');
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setIsSignup(activeModal === 'signup');
@@ -17,19 +19,41 @@ const AuthModal = ({ activeModal, onClose }) => {
   const [name, setName] = useState('');
   const [role, setRole] = useState('student');
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // Mock login: set name from email or input, set role
-    login({ name: name || email.split('@')[0] || 'User', role }, navigate);
-    onClose();
+    setLoading(true);
+    
+    try {
+      const data = await authAPI.login({ email, password, role });
+      login(data.user, navigate);
+      onClose();
+    } catch (error) {
+      alert(error.message || 'Login failed');
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
-    // Mock signup: immediately login the user
-    login({ name: name || email.split('@')[0] || 'User', role }, navigate);
-    onClose();
+    setLoading(true);
+    
+    try {
+      await authAPI.signup({ name, email, password, confirmpassword });
+      alert("Signup successful. Please login.");
+      setIsSignup(false);
+      // Clear form
+      setName('');
+      setEmail('');
+      setPassword('');
+      setConfirmPassword('');
+    } catch (error) {
+      alert(error.message || 'Signup failed');
+    } finally {
+      setLoading(false);
+    }
   };
+
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
@@ -61,12 +85,10 @@ const AuthModal = ({ activeModal, onClose }) => {
             />
             <select value={role} onChange={(e) => setRole(e.target.value)} className="max-w-md w-full mb-2 px-4 py-2 bg-gray-100 rounded">
               <option value="student">Student</option>
-              <option value="teacher">Teacher</option>
-              <option value="admin">Admin</option>
               <option value="parent">Parent</option>
             </select>
-            <button type="submit" className="border border-black text-black px-8 py-2 rounded-full cursor-pointer max-w-md w-full sm:w-auto">
-              Login
+            <button type="submit" disabled={loading} className="border border-black text-black px-8 py-2 rounded-full cursor-pointer max-w-md w-full sm:w-auto disabled:opacity-50">
+              {loading ? 'Logging in...' : 'Login'}
             </button>
             <div className="mt-4 text-sm">
               <span>Don't have an account? </span>
@@ -105,8 +127,8 @@ const AuthModal = ({ activeModal, onClose }) => {
               className="max-w-md w-full mb-2 px-4 py-2 bg-gray-100 rounded"
               placeholder="Confirm Password"
             />
-            <button className="border border-black text-black px-8 py-2 rounded-full cursor-pointer max-w-md w-full sm:w-auto">
-              Sign Up
+            <button disabled={loading} className="border border-black text-black px-8 py-2 rounded-full cursor-pointer max-w-md w-full sm:w-auto disabled:opacity-50">
+              {loading ? 'Signing up...' : 'Sign Up'}
             </button>
             <div className="mt-4 text-sm">
               <span>Already have an account? </span>

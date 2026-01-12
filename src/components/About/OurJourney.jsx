@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { MdSchool } from 'react-icons/md';
 import { FaChartLine, FaTrophy, FaLaptopCode, FaGraduationCap, FaStar, FaUserGraduate, FaChalkboardTeacher, FaHeart } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const OurJourney = () => {
   const ref = useRef(null);
   const [show, setShow] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -153,7 +155,10 @@ const OurJourney = () => {
             <p className="text-amber-100 mb-6 max-w-2xl mx-auto">
               Join hundreds of families who have trusted us with their children's education and future.
             </p>
-            <button className="bg-white text-amber-600 px-8 py-3 rounded-full font-semibold hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+            <button 
+              onClick={() => navigate('/admissions')}
+              className="bg-white text-amber-600 px-8 py-3 rounded-full font-semibold hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+            >
               Start Your Child's Journey
             </button>
           </div>

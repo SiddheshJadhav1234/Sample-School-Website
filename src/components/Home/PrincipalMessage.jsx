@@ -78,7 +78,15 @@ const PrincipalMessage = () => {
 
             {/* CTA */}
             <div className="text-center lg:text-left">
-              <button className="bg-white text-amber-600 border-2 border-amber-400 cursor-pointer px-8 py-3 rounded-full font-semibold hover:bg-amber-50 transform hover:scale-105 transition-all duration-300 shadow-lg">
+              <button 
+                onClick={() => {
+                  const ctaSection = document.getElementById('cta-section');
+                  if (ctaSection) {
+                    ctaSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                className="bg-white text-amber-600 border-2 border-amber-400 cursor-pointer px-8 py-3 rounded-full font-semibold hover:bg-amber-50 transform hover:scale-105 transition-all duration-300 shadow-lg"
+              >
                 Schedule a Meeting with Principal
               </button>
             </div>

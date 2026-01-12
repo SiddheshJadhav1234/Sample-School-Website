@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { FaEye, FaBullseye, FaHeart } from 'react-icons/fa';
+import AuthModal from '../Auth/AuthModal';
 
 const MissionVisionCards = () => {
   const [activeCard, setActiveCard] = useState(null);
+  const [showSignupModal, setShowSignupModal] = useState(false);
 
   const cards = [
     {
@@ -127,12 +129,23 @@ const MissionVisionCards = () => {
               <h3 className="text-xl font-semibold text-gray-800">Ready to Join Our Mission?</h3>
               <p className="text-gray-600">Discover how we can help your child thrive.</p>
             </div>
-            <button className="bg-linear-to-r from-amber-400 to-amber-600 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 ml-4 cursor-pointer">
+            <button 
+              onClick={() => setShowSignupModal(true)}
+              className="bg-linear-to-r from-amber-400 to-amber-600 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 ml-4 cursor-pointer"
+            >
               Get Started
             </button>
           </div>
         </div>
       </div>
+      
+      {/* Signup Modal */}
+      {showSignupModal && (
+        <AuthModal
+          activeModal="signup"
+          onClose={() => setShowSignupModal(false)}
+        />
+      )}
     </section>
   );
 };

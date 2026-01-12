@@ -37,7 +37,7 @@ const OurJourneyTimeline = () => {
   ];
 
   return (
-    <section className="py-20 bg-linear-to-br from-white via-amber-50 to-white">
+    <section id="journey-section" className="py-20 bg-linear-to-br from-white via-amber-50 to-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
@@ -92,7 +92,21 @@ const OurJourneyTimeline = () => {
             <p className="text-lg mb-6 opacity-90">
               Join us as we continue to create more milestones and shape the future of education.
             </p>
-            <button className="bg-white text-amber-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 cursor-pointer">
+            <button 
+              onClick={() => {
+                const admissionSection = document.getElementById('admission-section');
+                if (admissionSection) {
+                  admissionSection.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                  // If no admission section, scroll to contact or CTA
+                  const ctaSection = document.getElementById('cta-section');
+                  if (ctaSection) {
+                    ctaSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }
+              }}
+              className="bg-white text-amber-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 cursor-pointer"
+            >
               Join Our School Family
             </button>
           </div>

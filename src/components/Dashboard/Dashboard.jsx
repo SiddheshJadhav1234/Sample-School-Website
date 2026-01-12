@@ -14,6 +14,9 @@ import StudentScheduleSection from './StudentScheduleSection';
 import AchievementsSection from './AchievementsSection';
 import TestPlansSection from './TestPlansSection';
 import EmptySection from './EmptySection';
+import StudentManagement from './StudentManagement';
+import NoticeBoard from './NoticeBoard';
+import AttendanceManagement from './AttendanceManagement';
 
 const Dashboard = ({ role, data }) => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -38,7 +41,10 @@ const Dashboard = ({ role, data }) => {
     StudentScheduleSection,
     AchievementsSection,
     TestPlansSection,
-    EmptySection
+    EmptySection,
+    StudentManagement,
+    NoticeBoard,
+    AttendanceManagement
   };
 
   if (!data || !data.sidebarItems || !data.header) {
@@ -48,6 +54,17 @@ const Dashboard = ({ role, data }) => {
   }
 
   const renderContent = () => {
+    // Handle real-time components
+    if (activeTab === 'students') {
+      return <StudentManagement />;
+    }
+    if (activeTab === 'notices') {
+      return <NoticeBoard userRole={role} />;
+    }
+    if (activeTab === 'attendance') {
+      return <AttendanceManagement />;
+    }
+    
     if (!data.sections || !data.sections[activeTab]) {
       return <div className="text-gray-600">No content available for this section.</div>;
     }
@@ -95,9 +112,9 @@ const Dashboard = ({ role, data }) => {
         />
         
         <main className="flex-1 p-3 sm:p-6 overflow-auto">
-          {activeTab === 'overview' && data.stats && (
+          {activeTab === 'overview' && (
             <div className="mb-6">
-              <StatsGrid stats={data.stats} />
+              <StatsGrid userRole={role} />
             </div>
           )}
           <div className="min-w-0">
