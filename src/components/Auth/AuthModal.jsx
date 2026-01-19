@@ -18,6 +18,7 @@ const AuthModal = ({ activeModal, onClose }) => {
   const [confirmpassword, setConfirmPassword] = useState('');
   const [name, setName] = useState('');
   const [role, setRole] = useState('student');
+  const [signupRole, setSignupRole] = useState('student');
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -25,7 +26,8 @@ const AuthModal = ({ activeModal, onClose }) => {
     
     try {
       const data = await authAPI.login({ email, password, role });
-      login(data.user, navigate);
+      // Pass both token and user data to login function
+      login({ token: data.data.token, user: data.data.user }, navigate);
       onClose();
     } catch (error) {
       alert(error.message || 'Login failed');
@@ -39,7 +41,10 @@ const AuthModal = ({ activeModal, onClose }) => {
     setLoading(true);
     
     try {
-      await authAPI.signup({ name, email, password, confirmpassword });
+      const signupData = { name, email, password, confirmPassword: confirmpassword, role: signupRole };
+      console.log('Signup payload:', signupData);
+      console.log('Form state - name:', name, 'email:', email, 'role:', signupRole, 'pwd:', password?.length, 'confirmPwd:', confirmpassword?.length);
+      await authAPI.signup(signupData);
       alert("Signup successful. Please login.");
       setIsSignup(false);
       // Clear form
@@ -47,6 +52,7 @@ const AuthModal = ({ activeModal, onClose }) => {
       setEmail('');
       setPassword('');
       setConfirmPassword('');
+      setSignupRole('student');
     } catch (error) {
       alert(error.message || 'Signup failed');
     } finally {
@@ -84,8 +90,10 @@ const AuthModal = ({ activeModal, onClose }) => {
               placeholder="Password"
             />
             <select value={role} onChange={(e) => setRole(e.target.value)} className="max-w-md w-full mb-2 px-4 py-2 bg-gray-100 rounded">
-              <option value="student">Student</option>
-              <option value="parent">Parent</option>
+              <option value="student">Login as Student</option>
+              <option value="parent">Login as Parent</option>
+              <option value="teacher">Login as Teacher</option>
+              <option value="admin">Login as Admin</option>
             </select>
             <button type="submit" disabled={loading} className="border border-black text-black px-8 py-2 rounded-full cursor-pointer max-w-md w-full sm:w-auto disabled:opacity-50">
               {loading ? 'Logging in...' : 'Login'}
@@ -115,6 +123,7 @@ const AuthModal = ({ activeModal, onClose }) => {
               className="max-w-md w-full mb-2 px-4 py-2 bg-gray-100 rounded"
               placeholder="Email"
             />
+            
             <input
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -127,6 +136,17 @@ const AuthModal = ({ activeModal, onClose }) => {
               className="max-w-md w-full mb-2 px-4 py-2 bg-gray-100 rounded"
               placeholder="Confirm Password"
             />
+            
+            <select 
+              value={signupRole} 
+              onChange={(e) => setSignupRole(e.target.value)} 
+              className="max-w-md w-full mb-2 px-4 py-2 bg-gray-100 rounded"
+            >
+              <option value="student">Sign up as Student</option>
+              <option value="parent">Sign up as Parent</option>
+              <option value="teacher">Sign up as Teacher</option>
+            </select>
+
             <button disabled={loading} className="border border-black text-black px-8 py-2 rounded-full cursor-pointer max-w-md w-full sm:w-auto disabled:opacity-50">
               {loading ? 'Signing up...' : 'Sign Up'}
             </button>

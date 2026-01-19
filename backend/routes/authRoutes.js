@@ -1,13 +1,17 @@
-import express from 'express';
-import { signup, login } from '../controllers/authController.js';
+import express from "express";
+import { signup, login } from "../controllers/authController.js";
+import { verifyToken } from "../middleware/auth.js";
 
 const router = express.Router();
 
-router.post('/signup', signup);
-router.post('/login', login);
+/**
+ * Public Routes (No authentication required)
+ */
 
-// Separate routes for admin and teacher login (optional)
-router.post('/admin/login', login);
-router.post('/teacher/login', login);
+// Signup route - Create new user account
+router.post("/signup", signup);
+
+// Login route - Authenticate user and get JWT token
+router.post("/login", login);
 
 export default router;

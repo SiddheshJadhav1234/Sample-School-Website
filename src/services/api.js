@@ -3,16 +3,34 @@ const API_BASE_URL = 'http://localhost:5000/api';
 // Helper function for API calls
 const apiCall = async (endpoint, options = {}) => {
   try {
+    // Get token from localStorage
+    const token = localStorage.getItem('mms-token');
+    
+    const headers = {
+      'Content-Type': 'application/json',
+      ...options.headers,
+    };
+
+    // Add Authorization header if token exists (for protected endpoints)
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`;
+    }
+
     const response = await fetch(`${API_BASE_URL}${endpoint}`, {
-      headers: {
-        'Content-Type': 'application/json',
-        ...options.headers,
-      },
+      headers,
       ...options,
     });
     
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      // Try to get detailed error from backend
+      const errorData = await response.json().catch(() => ({}));
+      console.error(`API Error ${response.status}:`, errorData);
+      console.error('Request details:', {
+        endpoint,
+        method: options.method || 'GET',
+        body: options.body ? JSON.parse(options.body) : null,
+      });
+      throw new Error(`HTTP error! status: ${response.status} - ${errorData.message || ''}`);
     }
     
     return await response.json();

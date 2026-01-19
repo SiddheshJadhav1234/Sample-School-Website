@@ -1,20 +1,39 @@
-import express from 'express';
+import express from "express";
+import { verifyToken, authorize } from "../middleware/auth.js";
 import {
-    getAllTeachers,
-    getTeacherById,
-    addTeacher,
-    updateTeacher,
-    deleteTeacher,
-    getTeacherStats
-} from '../controllers/teacherController.js';
+  getMyProfile,
+  getAssignedStudents,
+  getTeacherById,
+} from "../controllers/teacherController.js";
 
 const router = express.Router();
 
-router.get('/', getAllTeachers);
-router.get('/stats', getTeacherStats);
-router.get('/:id', getTeacherById);
-router.post('/', addTeacher);
-router.put('/:id', updateTeacher);
-router.delete('/:id', deleteTeacher);
+/**
+ * Protected Routes - Teacher Only
+ * All routes require:
+ * 1. Valid JWT token (verifyToken)
+ * 2. User role must be "teacher" (authorize)
+ */
+
+// Get teacher's own profile
+// GET /api/teacher/me
+router.get("/me", verifyToken, authorize(["teacher"]), getMyProfile);
+
+// Get all students assigned to this teacher
+// GET /api/teacher/students?classLevel=5A (optional filter)
+router.get(
+  "/students",
+  verifyToken,
+  authorize(["teacher"]),
+  getAssignedStudents
+);
+
+/**
+ * Admin Routes
+ */
+
+// Get specific teacher by ID
+// GET /api/teacher/:teacherId
+router.get("/:teacherId", verifyToken, getTeacherById);
 
 export default router;

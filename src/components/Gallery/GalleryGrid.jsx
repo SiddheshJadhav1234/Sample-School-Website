@@ -3,7 +3,7 @@ import { FaPlay, FaExpand, FaSchool, FaTheaterMasks, FaFutbol, FaLaptop, FaMicro
 
 const GalleryGrid = ({ selectedCategory, setSelectedImage }) => {
   const galleryItems = [
-    { id: 1, category: 'classroom', title: 'Interactive Learning Session', description: 'Students engaged in hands-on learning activities', type: 'image', placeholder: <FaSchool className="w-12 h-12" /> },
+    { id: 1, category: 'classroom', title: 'Interactive Learning Session', description: 'Students engaged in hands-on learning', type: 'image', placeholder: <FaSchool className="w-12 h-12" /> },
     { id: 2, category: 'events', title: 'Annual Day Celebration', description: 'Students performing cultural programs', type: 'image', placeholder: <FaTheaterMasks className="w-12 h-12" /> },
     { id: 3, category: 'sports', title: 'Sports Day Activities', description: 'Students participating in various sports', type: 'image', placeholder: <FaFutbol className="w-12 h-12" /> },
     { id: 4, category: 'facilities', title: 'Modern Computer Lab', description: 'State-of-the-art computer laboratory', type: 'image', placeholder: <FaLaptop className="w-12 h-12" /> },
