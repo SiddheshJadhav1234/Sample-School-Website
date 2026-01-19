@@ -28,21 +28,6 @@ const userSchema = new mongoose.Schema(
       default: "student",
     },
 
-    // IMPORTANT: For parent role only
-    // Links a parent to their child (student)
-    // A parent can only have ONE linked student
-    linkedStudent: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Student",
-      default: null,
-      // This field is only populated if role === "parent"
-    },
-
-    // Flag to track if user has been activated (for future use)
-    isActive: {
-      type: Boolean,
-      default: true,
-    },
   },
   { timestamps: true }
 );
