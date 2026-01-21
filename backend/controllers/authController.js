@@ -35,6 +35,7 @@ export const signup = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = await User.create({ name, email, password: hashedPassword, role });
 
+    // Create role-specific records
     if (role === "student") {
       const studentCount = await Student.countDocuments();
       const rollNumber = `STU${Date.now()}${studentCount}`;
@@ -82,7 +83,7 @@ export const login = async (req, res) => {
       return errorResponse(res, 400, "Email, password, and role are required.");
     }
 
-    const user = await User.findOne({ email }).populate("linkedStudent");
+    const user = await User.findOne({ email });
 
     if (!user) {
       return errorResponse(res, 401, "Invalid email or password. Please try again.");
@@ -110,10 +111,6 @@ export const login = async (req, res) => {
       email: user.email,
       role: user.role,
     };
-
-    if (user.role === "parent" && user.linkedStudent) {
-      userResponse.linkedStudent = user.linkedStudent;
-    }
 
     return successResponse(res, 200, "Login successful", {
       token,

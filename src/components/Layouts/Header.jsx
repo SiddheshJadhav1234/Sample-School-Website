@@ -49,22 +49,59 @@ const Header = () => {
 
           {/* DESKTOP AUTH BUTTONS */}
           <div className="hidden lg:flex items-center gap-2">
-            <button
-              onClick={() => setActiveModal("login")}
-              className="border border-amber-400 text-amber-400 cursor-pointer px-4 py-2 rounded-full hover:bg-amber-400 hover:text-black transition-all duration-300 text-sm"
-            >
-              Login
-            </button>
+            {user ? (
+              <div className="flex items-center gap-3">
+                <Link 
+                  to="/dashboard" 
+                  className="bg-amber-400 text-black px-4 py-2 rounded-full hover:bg-amber-500 transition-all duration-300 text-sm font-semibold"
+                >
+                  Dashboard
+                </Link>
+                <div className="flex items-center gap-2 text-sm">
+                  <span className="text-amber-400">Welcome, {user.name}</span>
+                  <button
+                    onClick={logout}
+                    className="border border-red-400 text-red-400 px-3 py-1.5 rounded-full hover:bg-red-400 hover:text-white transition-all duration-300 text-xs"
+                  >
+                    Logout
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <button
+                onClick={() => setActiveModal("login")}
+                className="border border-amber-400 text-amber-400 cursor-pointer px-4 py-2 rounded-full hover:bg-amber-400 hover:text-black transition-all duration-300 text-sm"
+              >
+                Login
+              </button>
+            )}
           </div>
 
           {/* MOBILE HAMBURGER */}
           <div className="lg:hidden flex items-center gap-2">
-            <button
-              onClick={() => setActiveModal("login")}
-              className="border border-amber-400 text-amber-400 cursor-pointer px-3 py-1.5 rounded-full hover:bg-amber-400 hover:text-black transition-all duration-300 text-xs"
-            >
-              Login
-            </button>
+            {user ? (
+              <div className="flex items-center gap-2">
+                <Link 
+                  to="/dashboard" 
+                  className="bg-amber-400 text-black px-3 py-1.5 rounded-full hover:bg-amber-500 transition-all duration-300 text-xs font-semibold"
+                >
+                  Dashboard
+                </Link>
+                <button
+                  onClick={logout}
+                  className="border border-red-400 text-red-400 px-2 py-1 rounded-full hover:bg-red-400 hover:text-white transition-all duration-300 text-xs"
+                >
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={() => setActiveModal("login")}
+                className="border border-amber-400 text-amber-400 cursor-pointer px-3 py-1.5 rounded-full hover:bg-amber-400 hover:text-black transition-all duration-300 text-xs"
+              >
+                Login
+              </button>
+            )}
 
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

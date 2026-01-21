@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { authAPI } from '../../services/api';
 
 const AuthModal = ({ activeModal, onClose }) => {
-  const { login } = useAuth();
+  const { login, user } = useAuth();
   const navigate = useNavigate();
   const [isSignup, setIsSignup] = useState(activeModal === 'signup');
   const [loading, setLoading] = useState(false);
@@ -12,6 +12,12 @@ const AuthModal = ({ activeModal, onClose }) => {
   useEffect(() => {
     setIsSignup(activeModal === 'signup');
   }, [activeModal]);
+
+  // If user is already logged in, don't show the modal
+  if (user) {
+    onClose();
+    return null;
+  }
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

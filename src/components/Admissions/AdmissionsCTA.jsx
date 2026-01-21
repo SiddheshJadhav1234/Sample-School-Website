@@ -1,10 +1,22 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 import AuthModal from '../Auth/AuthModal';
 
 const AdmissionsCTA = () => {
   const [activeModal, setActiveModal] = useState(null);
+  const { user } = useAuth();
   const navigate = useNavigate();
+
+  const handleStartApplication = () => {
+    if (user) {
+      // If user is logged in, redirect to dashboard
+      navigate('/dashboard');
+    } else {
+      // If not logged in, show signup modal
+      setActiveModal("signup");
+    }
+  };
 
   return (
     <>
@@ -18,10 +30,10 @@ const AdmissionsCTA = () => {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button 
-            onClick={() => setActiveModal("signup")}
+            onClick={handleStartApplication}
             className="bg-white text-amber-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 cursor-pointer"
           >
-            Start Application
+            {user ? 'Go to Dashboard' : 'Start Application'}
           </button>
           <button 
             onClick={() => navigate('/contact')}

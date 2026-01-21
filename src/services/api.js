@@ -42,9 +42,10 @@ const apiCall = async (endpoint, options = {}) => {
 
 // Dashboard APIs
 export const dashboardAPI = {
-  getStats: () => apiCall('/dashboard/stats'),
+  getStudentDashboard: () => apiCall('/dashboard/student'),
+  getTeacherDashboard: () => apiCall('/dashboard/teacher'),
+  getParentDashboard: () => apiCall('/dashboard/parent'),
   getAdminDashboard: () => apiCall('/dashboard/admin'),
-  getTeacherDashboard: (email) => apiCall(`/dashboard/teacher/${email}`),
 };
 
 // Student APIs
@@ -102,8 +103,51 @@ export const noticeAPI = {
   delete: (id) => apiCall(`/notices/${id}`, { method: 'DELETE' }),
 };
 
+// Admin APIs
+export const adminAPI = {
+  // Student management
+  addStudent: (data) => apiCall('/admin/students', { method: 'POST', body: JSON.stringify(data) }),
+  getAllStudents: () => apiCall('/admin/students'),
+  updateStudent: (id, data) => apiCall(`/admin/students/${id}`, { method: 'PUT', body: JSON.stringify(data) }),
+  deleteStudent: (id) => apiCall(`/admin/students/${id}`, { method: 'DELETE' }),
+  
+  // Teacher management
+  addTeacher: (data) => apiCall('/admin/teachers', { method: 'POST', body: JSON.stringify(data) }),
+  getAllTeachers: () => apiCall('/admin/teachers'),
+  updateTeacher: (id, data) => apiCall(`/admin/teachers/${id}`, { method: 'PUT', body: JSON.stringify(data) }),
+  deleteTeacher: (id) => apiCall(`/admin/teachers/${id}`, { method: 'DELETE' }),
+};
+
+// Statistics APIs
+export const statisticsAPI = {
+  get: () => apiCall('/statistics'),
+};
+
+// Contact Form APIs
+export const contactAPI = {
+  submit: (data) => apiCall('/contact/submit', { method: 'POST', body: JSON.stringify(data) }),
+  getAll: (params = {}) => {
+    const query = new URLSearchParams(params).toString();
+    return apiCall(`/contact${query ? `?${query}` : ''}`);
+  },
+  getStats: () => apiCall('/contact/stats'),
+  updateStatus: (id, data) => apiCall(`/contact/${id}`, { method: 'PUT', body: JSON.stringify(data) }),
+  delete: (id) => apiCall(`/contact/${id}`, { method: 'DELETE' }),
+};
+
 // Auth APIs
 export const authAPI = {
   login: (data) => apiCall('/auth/login', { method: 'POST', body: JSON.stringify(data) }),
   signup: (data) => apiCall('/auth/signup', { method: 'POST', body: JSON.stringify(data) }),
+};
+
+// Application APIs
+export const applicationAPI = {
+  submit: (data) => apiCall('/applications/submit', { method: 'POST', body: JSON.stringify(data) }),
+  getAll: (params = {}) => {
+    const query = new URLSearchParams(params).toString();
+    return apiCall(`/applications${query ? `?${query}` : ''}`);
+  },
+  updateStatus: (id, data) => apiCall(`/applications/${id}`, { method: 'PUT', body: JSON.stringify(data) }),
+  delete: (id) => apiCall(`/applications/${id}`, { method: 'DELETE' }),
 };

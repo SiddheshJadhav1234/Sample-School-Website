@@ -2,21 +2,20 @@ import React, { useState, useEffect } from 'react';
 import Sidebar from './Sidebar';
 import Header from './Header';
 import StatsGrid from './StatsGrid';
+import DashboardCharts from './DashboardChartsSimple';
 import TableSection from './TableSection';
 import ScheduleSection from './ScheduleSection';
-import FinanceSection from './FinanceSection';
-import ReportsSection from './ReportsSection';
-import SettingsSection from './SettingsSection';
-import LessonSection from './LessonSection';
-import TeacherScheduleSection from './TeacherScheduleSection';
-import GradesSection from './GradesSection';
-import StudentScheduleSection from './StudentScheduleSection';
-import AchievementsSection from './AchievementsSection';
-import TestPlansSection from './TestPlansSection';
-import EmptySection from './EmptySection';
-import StudentManagement from './StudentManagement';
 import NoticeBoard from './NoticeBoard';
 import AttendanceManagement from './AttendanceManagement';
+import ContactManagement from './ContactManagement';
+import ApplicationManagement from './ApplicationManagement';
+import ClassManagement from './ClassManagement';
+import FinanceManagement from './FinanceManagement';
+import ReportsManagement from './ReportsManagement';
+import SettingsManagement from './SettingsManagement';
+import AdminStudentManagement from './AdminStudentManagement';
+import AdminTeacherManagement from './AdminTeacherManagement';
+import ModalManager from './ModalManager';
 
 const Dashboard = ({ role, data }) => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -32,19 +31,16 @@ const Dashboard = ({ role, data }) => {
   const componentMap = {
     TableSection,
     ScheduleSection,
-    FinanceSection,
-    ReportsSection,
-    SettingsSection,
-    LessonSection,
-    TeacherScheduleSection,
-    GradesSection,
-    StudentScheduleSection,
-    AchievementsSection,
-    TestPlansSection,
-    EmptySection,
-    StudentManagement,
     NoticeBoard,
-    AttendanceManagement
+    AttendanceManagement,
+    ContactManagement,
+    ApplicationManagement,
+    ClassManagement,
+    FinanceManagement,
+    ReportsManagement,
+    SettingsManagement,
+    AdminStudentManagement,
+    AdminTeacherManagement
   };
 
   if (!data || !data.sidebarItems || !data.header) {
@@ -55,14 +51,38 @@ const Dashboard = ({ role, data }) => {
 
   const renderContent = () => {
     // Handle real-time components
+    if (activeTab === 'contacts') {
+      return <ContactManagement />;
+    }
+    if (activeTab === 'applications') {
+      return <ApplicationManagement />;
+    }
+    if (activeTab === 'classes') {
+      return <ClassManagement />;
+    }
+    if (activeTab === 'finance') {
+      return <FinanceManagement />;
+    }
+    if (activeTab === 'reports') {
+      return <ReportsManagement />;
+    }
+    if (activeTab === 'settings') {
+      return <SettingsManagement />;
+    }
     if (activeTab === 'students') {
-      return <StudentManagement />;
+      return <AdminStudentManagement />;
+    }
+    if (activeTab === 'teachers') {
+      return <AdminTeacherManagement />;
     }
     if (activeTab === 'notices') {
       return <NoticeBoard userRole={role} />;
     }
     if (activeTab === 'attendance') {
       return <AttendanceManagement />;
+    }
+    if (activeTab === 'schedule') {
+      return <ScheduleSection />;
     }
     
     if (!data.sections || !data.sections[activeTab]) {
@@ -81,6 +101,9 @@ const Dashboard = ({ role, data }) => {
 
   return (
     <div className="min-h-screen bg-gray-50 flex relative">
+      {/* Modal Manager */}
+      <ModalManager />
+      
       {/* Mobile Overlay */}
       {sidebarOpen && (
         <div 
@@ -114,7 +137,8 @@ const Dashboard = ({ role, data }) => {
         <main className="flex-1 p-3 sm:p-6 overflow-auto">
           {activeTab === 'overview' && (
             <div className="mb-6">
-              <StatsGrid userRole={role} />
+              <StatsGrid stats={data.stats} />
+              <DashboardCharts userRole={role} />
             </div>
           )}
           <div className="min-w-0">

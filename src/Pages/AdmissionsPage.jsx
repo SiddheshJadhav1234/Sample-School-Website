@@ -3,6 +3,7 @@ import AdmissionsHero from '../components/Admissions/AdmissionsHero';
 import AdmissionProcess from '../components/Admissions/AdmissionProcess';
 import EligibilityCriteria from '../components/Admissions/EligibilityCriteria';
 import RequiredDocuments from '../components/Admissions/RequiredDocuments';
+import ApplicationForm from '../components/Admissions/ApplicationForm';
 import AdmissionsCTA from '../components/Admissions/AdmissionsCTA';
 
 const AdmissionsPage = () => {
@@ -12,6 +13,7 @@ const AdmissionsPage = () => {
       <AdmissionProcess />
       <EligibilityCriteria />
       <RequiredDocuments />
+      <ApplicationForm />
       <AdmissionsCTA />
     </div>
   );

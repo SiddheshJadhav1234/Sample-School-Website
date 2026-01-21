@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { FaPaperPlane, FaMapMarkerAlt, FaPhone, FaEnvelope, FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import { FaPaperPlane, FaMapMarkerAlt, FaPhone, FaEnvelope, FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaCheckCircle, FaExclamationCircle } from 'react-icons/fa';
+import { contactAPI } from '../../services/api';
 
 const ContactFormSection = () => {
   const [formData, setFormData] = useState({
@@ -9,24 +10,46 @@ const ContactFormSection = () => {
     subject: '',
     message: ''
   });
+  
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState('');
 
   const handleInputChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
+    // Clear messages when user starts typing
+    if (error) setError('');
+    if (success) setSuccess(false);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: ''
-    });
+    setLoading(true);
+    setError('');
+    setSuccess(false);
+    
+    try {
+      const response = await contactAPI.submit(formData);
+      
+      if (response.success) {
+        setSuccess(true);
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          subject: '',
+          message: ''
+        });
+      }
+    } catch (err) {
+      setError(err.message || 'Failed to send message. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const departments = [
@@ -51,6 +74,22 @@ const ContactFormSection = () => {
               <p className="text-xl text-gray-600">
                 Fill out the form below and we'll get back to you as soon as possible.
               </p>
+              
+              {/* Success Message */}
+              {success && (
+                <div className="mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg flex items-center gap-2">
+                  <FaCheckCircle className="w-5 h-5" />
+                  <span>Your message has been sent successfully! We'll get back to you soon.</span>
+                </div>
+              )}
+              
+              {/* Error Message */}
+              {error && (
+                <div className="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg flex items-center gap-2">
+                  <FaExclamationCircle className="w-5 h-5" />
+                  <span>{error}</span>
+                </div>
+              )}
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -127,10 +166,20 @@ const ContactFormSection = () => {
 
               <button
                 type="submit"
-                className="w-full bg-linear-to-r from-amber-400 to-amber-600 text-white py-4 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+                disabled={loading}
+                className="w-full bg-linear-to-r from-amber-400 to-amber-600 text-white py-4 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
               >
-                <FaPaperPlane className="w-5 h-5" />
-                Send Message
+                {loading ? (
+                  <>
+                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <FaPaperPlane className="w-5 h-5" />
+                    Send Message
+                  </>
+                )}
               </button>
             </form>
           </div>
